@@ -10,4 +10,6 @@
 #
 
 class Invoice < ActiveRecord::Base
+  has_many :auths
+  has_many :payments
 end

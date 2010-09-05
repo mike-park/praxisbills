@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905144037) do
+ActiveRecord::Schema.define(:version => 20100905145132) do
 
   create_table "auths", :force => true do |t|
     t.string   "krankenkasse"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20100905144037) do
     t.integer  "patient_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "invoice_id"
   end
 
   create_table "bill_items", :force => true do |t|
