@@ -1,4 +1,6 @@
 Praxisbills1::Application.routes.draw do
+  resources :payments
+
   resources :bill_items
 
   resources :auths
