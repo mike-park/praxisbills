@@ -2,7 +2,7 @@ class CreatePatients < ActiveRecord::Migration
   def self.up
     create_table :patients do |t|
       t.string :first_name
-      t.string :last_name
+      t.string :last_name, :null => false
       t.date :dob
 
       t.timestamps
