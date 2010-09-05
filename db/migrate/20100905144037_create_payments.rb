@@ -1,9 +1,9 @@
 class CreatePayments < ActiveRecord::Migration
   def self.up
     create_table :payments do |t|
-      t.references :invoice
-      t.date :rec_date
-      t.decimal :amount
+      t.references :invoice, :null => false
+      t.date :rec_date, :null => false
+      t.decimal :amount, :precision => 8, :scale => 2, :null => false
 
       t.timestamps
     end
