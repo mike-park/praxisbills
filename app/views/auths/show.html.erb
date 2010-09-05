@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Krankenkasse:</b>
+  <%= @auth.krankenkasse %>
+</p>
+
+<p>
+  <b>Doctor:</b>
+  <%= @auth.doctor %>
+</p>
+
+<p>
+  <b>Max sessions:</b>
+  <%= @auth.max_sessions %>
+</p>
+
+<p>
+  <b>Billed:</b>
+  <%= @auth.billed %>
+</p>
+
+<p>
+  <b>Patient:</b>
+  <%= @auth.patient %>
+</p>
+
+
+<%= link_to 'Edit', edit_auth_path(@auth) %> |
+<%= link_to 'Back', auths_path %>

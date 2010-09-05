@@ -1,0 +1,31 @@
+<h1>Listing auths</h1>
+
+<table>
+  <tr>
+    <th>Krankenkasse</th>
+    <th>Doctor</th>
+    <th>Max sessions</th>
+    <th>Billed</th>
+    <th>Patient</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @auths.each do |auth| %>
+  <tr>
+    <td><%= auth.krankenkasse %></td>
+    <td><%= auth.doctor %></td>
+    <td><%= auth.max_sessions %></td>
+    <td><%= auth.billed %></td>
+    <td><%= auth.patient %></td>
+    <td><%= link_to 'Show', auth %></td>
+    <td><%= link_to 'Edit', edit_auth_path(auth) %></td>
+    <td><%= link_to 'Destroy', auth, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Auth', new_auth_path %>

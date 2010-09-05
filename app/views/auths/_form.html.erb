@@ -1,0 +1,37 @@
+<%= form_for(@auth) do |f| %>
+  <% if @auth.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@auth.errors.count, "error") %> prohibited this auth from being saved:</h2>
+
+      <ul>
+      <% @auth.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :krankenkasse %><br />
+    <%= f.text_field :krankenkasse %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor %><br />
+    <%= f.text_field :doctor %>
+  </div>
+  <div class="field">
+    <%= f.label :max_sessions %><br />
+    <%= f.text_field :max_sessions %>
+  </div>
+  <div class="field">
+    <%= f.label :billed %><br />
+    <%= f.check_box :billed %>
+  </div>
+  <div class="field">
+    <%= f.label :patient %><br />
+    <%= f.text_field :patient %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
