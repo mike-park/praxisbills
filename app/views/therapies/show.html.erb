@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @therapy.code %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @therapy.price %>
+</p>
+
+<p>
+  <b>Short description:</b>
+  <%= @therapy.short_description %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @therapy.description %>
+</p>
+
+<p>
+  <b>Valid from:</b>
+  <%= @therapy.valid_from %>
+</p>
+
+
+<%= link_to 'Edit', edit_therapy_path(@therapy) %> |
+<%= link_to 'Back', therapies_path %>

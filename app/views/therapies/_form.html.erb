@@ -1,0 +1,37 @@
+<%= form_for(@therapy) do |f| %>
+  <% if @therapy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@therapy.errors.count, "error") %> prohibited this therapy from being saved:</h2>
+
+      <ul>
+      <% @therapy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :short_description %><br />
+    <%= f.text_field :short_description %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :valid_from %><br />
+    <%= f.date_select :valid_from %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
