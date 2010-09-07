@@ -1,8 +1,7 @@
 class InvoicesController < ApplicationController
-  # GET /invoices
-  # GET /invoices.xml
   def index
-    @invoices = Invoice.all
+    @paid_invoices = Invoice.paid
+    @unpaid_invoices = Invoice.unpaid
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,6 +34,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
+    current_invoice = @invoice
   end
 
   # POST /invoices
@@ -44,6 +44,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.save
+        current_invoice = @invoice
         format.html { redirect_to(@invoice, :notice => 'Invoice was successfully created.') }
         format.xml  { render :xml => @invoice, :status => :created, :location => @invoice }
       else
@@ -60,6 +61,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
+        current_invoice = @invoice
         format.html { redirect_to(@invoice, :notice => 'Invoice was successfully updated.') }
         format.xml  { head :ok }
       else

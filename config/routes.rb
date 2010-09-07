@@ -1,15 +1,21 @@
 Praxisbills1::Application.routes.draw do
+  root :to => "pages#home"
+
   resources :patients do
     resources :auths
+  end
+  
+  resources :invoices do
+    resources :auths
+  end
+  
+  resources :auths do
     resources :bill_items
   end
 
-  resources :invoices do
-    resources :payments
-  end
-
+  resources :payments
   resources :therapies
-
+  resources :bill_items
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

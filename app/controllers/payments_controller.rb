@@ -37,8 +37,6 @@ class PaymentsController < ApplicationController
     @payment = Payment.find(params[:id])
   end
 
-  # POST /payments
-  # POST /payments.xml
   def create
     @payment = Payment.new(params[:payment])
 

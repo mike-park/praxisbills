@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100905144037
+# Schema version: 20100907104405
 #
 # Table name: invoices
 #
@@ -7,9 +7,25 @@
 #  sent_date  :date            not null
 #  created_at :datetime
 #  updated_at :datetime
+#  open       :boolean         default(TRUE)
 #
 
 class Invoice < ActiveRecord::Base
-  has_many :auths
-  has_many :payments
+  has_many :auths, :dependent => :destroy
+  has_many :payments, :order => "rec_date", :dependent => :destroy
+
+  scope :paid, :conditions => { :open => false }
+  scope :unpaid, :conditions => { :open => true }
+
+  def billed_amount
+    auths.map(&:total).sum
+  end
+
+  def received_amount
+    payments.map(&:amount).sum
+  end
+
+  def owed_to_us
+    billed_amount - received_amount
+  end
 end

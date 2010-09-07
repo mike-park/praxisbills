@@ -1,20 +1,14 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Details for Payment</h1>
 <p>
   <b>Invoice:</b>
-  <%= @payment.invoice %>
-</p>
-
-<p>
-  <b>Rec date:</b>
+  <%= @payment.invoice.sent_date %>
+  <br/>
+  <b>Received date:</b>
   <%= @payment.rec_date %>
-</p>
-
-<p>
+  <br/>
   <b>Amount:</b>
-  <%= @payment.amount %>
+  <%= number_to_currency @payment.amount %>
 </p>
-
 
 <%= link_to 'Edit', edit_payment_path(@payment) %> |
 <%= link_to 'Back', payments_path %>

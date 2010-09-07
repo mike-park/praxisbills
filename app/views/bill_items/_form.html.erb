@@ -1,37 +1,15 @@
-<%= form_for(@bill_item) do |f| %>
-  <% if @bill_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bill_item.errors.count, "error") %> prohibited this bill_item from being saved:</h2>
-
-      <ul>
-      <% @bill_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :auth %><br />
-    <%= f.text_field :auth %>
-  </div>
-  <div class="field">
-    <%= f.label :therapy %><br />
-    <%= f.text_field :therapy %>
-  </div>
-  <div class="field">
-    <%= f.label :quantity %><br />
-    <%= f.text_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :unit_price %><br />
-    <%= f.text_field :unit_price %>
-  </div>
-  <div class="field">
-    <%= f.label :total %><br />
-    <%= f.text_field :total %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <tr>
+	<td>
+	  <%= f.collection_select :therapy_id, Therapy.order("code").all,
+	  :id, :select_name, { :prompt => 'Therapy type' }, :autofocus => true %>
+	</td>
+	<td class="qty">
+	  <%= f.text_field :quantity, :size => 4 %>
+	</td>
+	<td class="price">
+	  <%= f.text_field :unit_price, :size => 8 %>
+	</td>
+	<td colspan="3">
+	  <%= f.submit %>
+	</td>
+      </tr>

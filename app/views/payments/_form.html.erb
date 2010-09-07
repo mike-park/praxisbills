@@ -12,15 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :invoice %><br />
-    <%= f.text_field :invoice %>
+    <%= f.label :invoice %>
+    <%= f.collection_select :invoice_id, Invoice.order("sent_date").unpaid,
+          :id, :sent_date, { :prompt => 'Select invoice' },
+	  :autofocus => true %>
   </div>
   <div class="field">
-    <%= f.label :rec_date %><br />
+    <%= f.label :rec_date %>
     <%= f.date_select :rec_date %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
   </div>
   <div class="actions">

@@ -16,4 +16,17 @@
 class BillItem < ActiveRecord::Base
   belongs_to :auth
   belongs_to :therapy
+
+  before_save :update_prices
+
+  validates_presence_of :auth_id, :therapy_id, :quantity
+  validates_numericality_of :quantity
+
+  attr_accessible :auth_id, :therapy_id, :quantity, :unit_price
+
+  private
+    def update_prices
+      self.unit_price ||= therapy.price
+      self.total = unit_price * quantity;
+    end
 end

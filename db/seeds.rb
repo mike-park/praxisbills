@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+require 'csv'
+require 'ap'
+
+CSV.foreach(File.expand_path('../therapy.csv', __FILE__),
+            :col_sep => ';') do |row|
+  row[1].sub!(',','.')
+  Therapy.create!(:code => row[0],
+                  :price => row[1],
+                  :short_description => row[2],
+                  :description => row[3],
+                  :valid_from => '2010-03-01')
+end

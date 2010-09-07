@@ -1,30 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Krankenkasse:</b>
-  <%= @auth.krankenkasse %>
-</p>
-
-<p>
-  <b>Doctor:</b>
-  <%= @auth.doctor %>
-</p>
-
-<p>
-  <b>Max sessions:</b>
-  <%= @auth.max_sessions %>
-</p>
-
-<p>
-  <b>Billed:</b>
-  <%= @auth.billed %>
-</p>
-
+<h1>Details for Auth</h1>
 <p>
   <b>Patient:</b>
-  <%= @auth.patient %>
+  <%= link_to @auth.patient.select_name, patient_path(@auth.patient) %>
+  <br/>
+  <b>Allowed Sessions:</b>
+  <%= @auth.max_sessions %>
+  <br/>
+  <b>Used Sessions:</b>
+  <%= @auth.bill_items.maximum(:quantity) %>
+  <br/>
+  <b>Amount:</b>
+  <%= number_to_currency @auth.bill_items.sum(:total) %>
 </p>
 
-
-<%= link_to 'Edit', edit_auth_path(@auth) %> |
-<%= link_to 'Back', auths_path %>
+<%= render 'details' %>

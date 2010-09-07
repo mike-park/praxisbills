@@ -1,0 +1,43 @@
+<%= form_for(@bill_item) do |f| %>
+  <% if @bill_item.errors.any? %>
+      <div id="error_explanation">
+	<h2><%= pluralize(@bill_item.errors.count, "error") %> prohibited this bill_item from being saved:</h2>
+
+	<ul>
+	  <% @bill_item.errors.full_messages.each do |msg| %>
+	  <li><%= msg %></li>
+	  <% end %>
+	</ul>
+      </div>
+  <% end %>
+
+  <%= f.hidden_field :auth_id %>
+
+  <table>
+    <caption>Therapies</caption>
+    <thead>
+      <tr>
+	<th>Therapy</th>
+	<th class="qty">Quantity</th>
+	<th class="price">Unit price</th>
+	<th class="price">Total</th>
+	<th></th>
+	<th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bill_items.each do |bill_item|
+      if bill_item == @bill_item
+      %>
+      <%= render :partial => 'bill_items/form', :locals => { :f => f } %>
+      <% else %>
+      <%= render bill_item %>
+      <% end %>
+      <% end %>
+      <% if @bill_item.new_record? %>
+      <%= render :partial => 'bill_items/form', :locals => { :f => f } %>
+      <% end -%>
+    </tbody>
+  </table>
+<% end %>
+

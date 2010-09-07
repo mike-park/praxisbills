@@ -1,0 +1,26 @@
+<table class='invoices'>
+  <caption><%= caption ||= 'Invoices' %></caption>
+  <thead>
+    <tr>
+      <th>Sent date</th>
+      <th class='price'>Billed Amount</th>
+      <th class='price'>Received Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% invoices.each do |invoice| %>
+    <tr>
+      <td><%= invoice.sent_date %></td>
+      <td class='price'><%= number_to_currency invoice.auths.map(&:total).sum %></td>
+      <td class='price'><%= number_to_currency invoice.payments.sum(:amount) %></td>
+      <td><%= link_to 'Details', invoice %></td>
+      <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+      <td><%= link_to 'Delete', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -3,11 +3,10 @@
 <table>
   <tr>
     <th>Code</th>
-    <th>Price</th>
+    <th class='price'>Price</th>
     <th>Short description</th>
     <th>Description</th>
     <th>Valid from</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -15,11 +14,10 @@
 <% @therapies.each do |therapy| %>
   <tr>
     <td><%= therapy.code %></td>
-    <td><%= therapy.price %></td>
+    <td class='price'><%= number_to_currency therapy.price %></td>
     <td><%= therapy.short_description %></td>
     <td><%= therapy.description %></td>
     <td><%= therapy.valid_from %></td>
-    <td><%= link_to 'Show', therapy %></td>
     <td><%= link_to 'Edit', edit_therapy_path(therapy) %></td>
     <td><%= link_to 'Destroy', therapy, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

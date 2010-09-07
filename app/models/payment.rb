@@ -13,4 +13,7 @@
 
 class Payment < ActiveRecord::Base
   belongs_to :invoice
+
+  validates_presence_of :invoice_id, :rec_date, :amount
+  validates_numericality_of :amount
 end

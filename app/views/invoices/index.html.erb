@@ -1,22 +1,16 @@
 <h1>Listing invoices</h1>
 
-<table>
-  <tr>
-    <th>Sent date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if !@unpaid_invoices.empty? %>
+<%= render :partial => 'list_invoices',
+     :locals => { :caption => 'Unpaid Invoices',
+     :invoices => @unpaid_invoices } %>
+<% end -%>
 
-<% @invoices.each do |invoice| %>
-  <tr>
-    <td><%= invoice.sent_date %></td>
-    <td><%= link_to 'Show', invoice %></td>
-    <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-    <td><%= link_to 'Destroy', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<% if !@paid_invoices.empty? %>
+<%= render :partial => 'list_invoices',
+      :locals => { :caption => 'Paid Invoices',
+      :invoices => @paid_invoices } %>
+<% end -%>					 
 
 <br />
 

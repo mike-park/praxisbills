@@ -13,4 +13,8 @@
 
 class Patient < ActiveRecord::Base
   has_many :auths
+
+  def select_name
+    [last_name, first_name].join(", ")
+  end
 end

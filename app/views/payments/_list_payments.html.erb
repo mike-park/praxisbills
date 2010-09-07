@@ -1,0 +1,30 @@
+<table class='payments'>
+  <caption><%= caption ||= 'Payments' %></caption>
+  <thead>
+    <tr>
+      <th>Received date</th>
+      <th class='price'>Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% payments.each do |payment| %>
+    <tr>
+      <td><%= payment.rec_date %></td>
+      <td class='price'><%= number_to_currency payment.amount %></td>
+      <td class='link'></td>
+      <td class='link'><%= link_to 'Edit', edit_payment_path(payment) %></td>
+      <td class='link'><%= link_to 'Delete', payment, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+    <% end %>
+    <tr class='totals'>
+      <td class='totals'>Total</td>
+      <td class="totals price"><%= number_to_currency payments.sum(:amount) %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

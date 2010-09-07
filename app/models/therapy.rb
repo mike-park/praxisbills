@@ -15,4 +15,12 @@
 
 class Therapy < ActiveRecord::Base
   has_many :bill_items
+
+  validates_presence_of :code, :price, :description, :valid_from
+
+  validates_uniqueness_of :code
+
+  def select_name
+    "#{code} #{short_description || description}".truncate(40)
+  end
 end
