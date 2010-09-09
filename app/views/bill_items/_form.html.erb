@@ -9,7 +9,15 @@
 	<td class="price">
 	  <%= f.text_field :unit_price, :size => 8 %>
 	</td>
-	<td colspan="3">
-	  <%= f.submit %>
-	</td>
+	<% if f.object.new_record? %>
+	  <td colspan="3">
+	    <%= f.submit 'Add Therapy' %>
+	  </td>
+	<% else %>
+	  <td colspan="2">
+	    <%= f.submit 'Update Therapy' %>
+	  </td>
+	  <td class='link'><%= link_to 'Delete', auth_bill_item_path(@auth, f.object), :confirm => 'Are you sure?', :method => :delete %>
+	  </td>
+	<% end -%>
       </tr>

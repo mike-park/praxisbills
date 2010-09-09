@@ -3,12 +3,12 @@
 <h1>Details for Invoice</h1>
 <p>
   <b>Sent date:</b>
-  <%= @invoice.sent_date %>
+  <%= @invoice.sent_date.to_s %>, <%= time_ago_in_words(@invoice.sent_date) %> ago
   <br/>
   <b>Status:</b>
   <%= invoice_status(@invoice) %>
   <br/>
-  <b>Owed to us:</b>
+  <b>Owed:</b>
   <%= number_to_currency @invoice.owed_to_us %>
 </p>
 

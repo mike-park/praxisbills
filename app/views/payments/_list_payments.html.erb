@@ -20,8 +20,8 @@
     </tr>
     <% end %>
     <tr class='totals'>
-      <td class='totals'>Total</td>
-      <td class="totals price"><%= number_to_currency payments.sum(:amount) %></td>
+      <td class='totals'><%= pluralize(payments.count, 'payment') %></td>
+      <td class="totals price"><%= number_to_currency payments.map(&:amount).sum %></td>
       <td></td>
       <td></td>
       <td></td>

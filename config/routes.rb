@@ -15,7 +15,6 @@ Praxisbills1::Application.routes.draw do
 
   resources :payments
   resources :therapies
-  resources :bill_items
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def current_patient=(patient)
     @patient = patient
     session[:patient_id] = patient.nil? ? nil : patient.id
+    logger.info("#{patient} set as current")
   end
   
   def current_patient

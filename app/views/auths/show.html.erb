@@ -1,8 +1,13 @@
-<h1>Details for Auth</h1>
+<h1>Details for Patient Authorization</h1>
 <p>
   <b>Patient:</b>
   <%= link_to @auth.patient.select_name, patient_path(@auth.patient) %>
   <br/>
+  <% if !@auth.invoice.nil? %>
+    <b>Part of invoice:</b>
+    <%= link_to @auth.invoice.select_name, invoice_path(@auth.invoice) %>
+  <br/>
+  <% end -%>
   <b>Allowed Sessions:</b>
   <%= @auth.max_sessions %>
   <br/>
@@ -13,4 +18,4 @@
   <%= number_to_currency @auth.bill_items.sum(:total) %>
 </p>
 
-<%= render 'details' %>
+<%= render 'auths/details' %>

@@ -21,6 +21,6 @@ class Therapy < ActiveRecord::Base
   validates_uniqueness_of :code
 
   def select_name
-    "#{code} #{short_description || description}".truncate(40)
+    "#{code} #{short_description || description}".truncate(45)
   end
 end

@@ -1,5 +1,5 @@
 <table class="auths">
-  <caption><%= caption ||= 'Auths' %></caption>
+  <caption><%= caption ||= 'Patient Authorizations' %></caption>
   <thead>
     <tr>
       <th>Patient</th>
@@ -24,7 +24,7 @@
       </tr>
     <% end -%>
     <tr class='totals'>
-      <td class='totals'>Totals</td>
+      <td class='totals'><%= pluralize(auths.count, 'patient') %></td>
       <td class='totals qty'><%= auths.map(&:max_sessions).sum %></td>
       <td class='totals qty'><%= auths.map(&:maximum_quantity).sum %></td>
       <td class="totals price"><%= number_to_currency auths.map(&:total).sum %></td>

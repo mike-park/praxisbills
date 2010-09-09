@@ -2,7 +2,7 @@
 
 <% if !@payments.empty? %>
   <%= render :partial => 'list_payments',
-        :locals => { :caption => 'Payments'
+        :locals => { :caption => 'Payments',
                      :payments => @payments } %>
 <% end %>
 

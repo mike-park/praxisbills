@@ -11,6 +11,8 @@ class AuthsController < ApplicationController
   
   def edit
     @auth = Auth.find(params[:id])
+    @bill_item = BillItem.new(:auth_id => @auth.id)
+    @invoice = current_invoice
   end
   
   def new
@@ -41,8 +43,8 @@ class AuthsController < ApplicationController
   def destroy
     @auth = Auth.find(params[:id])
     @auth.destroy
-    redirect_to(auths_path)
+    @invoice = current_invoice
+    redirect_to(@invoice ? @invoice : invoices_path)
   end
-
 
 end

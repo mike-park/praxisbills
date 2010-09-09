@@ -1,4 +1,4 @@
-<%= form_for(@bill_item) do |f| %>
+<%= form_for([@auth, @bill_item]) do |f| %>
   <% if @bill_item.errors.any? %>
       <div id="error_explanation">
 	<h2><%= pluralize(@bill_item.errors.count, "error") %> prohibited this bill_item from being saved:</h2>
@@ -10,8 +10,6 @@
 	</ul>
       </div>
   <% end %>
-
-  <%= f.hidden_field :auth_id %>
 
   <table>
     <caption>Therapies</caption>

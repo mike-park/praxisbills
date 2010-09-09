@@ -28,4 +28,8 @@ class Invoice < ActiveRecord::Base
   def owed_to_us
     billed_amount - received_amount
   end
+
+  def select_name
+    sent_date
+  end
 end

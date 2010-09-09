@@ -21,6 +21,9 @@ class BillItem < ActiveRecord::Base
 
   validates_presence_of :auth_id, :therapy_id, :quantity
   validates_numericality_of :quantity
+  validates_uniqueness_of :therapy_id,
+                          :scope => "auth_id",
+                          :message => 'is already referenced by this authorization'
 
   attr_accessible :auth_id, :therapy_id, :quantity, :unit_price
 

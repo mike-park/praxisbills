@@ -1,7 +1,7 @@
 <%= render :partial => 'bill_items/bill_items', :locals => {
            :bill_items => @auth.bill_items } %>
 
-<%= link_to 'New auth', new_auth_path %> |
+<%= link_to 'New Patient Authorization', new_auth_path %> |
 <% if !@invoice.nil? %>
 <%= link_to 'Show current invoice', @invoice %> |
 <% end %>

@@ -44,7 +44,7 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        current_patient = @patient
+        self.current_patient = @patient
         format.html { redirect_to(current_invoice ? new_invoice_auth_path(@invoice) : patients_path, :notice => 'Patient was successfully created.') }
         format.xml  { render :xml => @patient, :status => :created, :location => @patient }
       else

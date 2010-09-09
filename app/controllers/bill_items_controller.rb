@@ -1,38 +1,40 @@
 class BillItemsController < ApplicationController
-  def new
-    @bill_item = BillItem.new(:auth_id => params[:auth_id])
-  end
-  
+  before_filter :find_auth_and_invoice
+
   def create
     @bill_item = BillItem.new(params[:bill_item])
+    @bill_item.auth = @auth;
     if @bill_item.save
-      redirect_to auth_path(@bill_item.auth_id,
-                            :notice => 'Therapy added')
+      redirect_to @auth, :notice => 'Therapy added'
     else
-      render 'new'
+      render 'auths/show'
     end
   end
 
   def edit
     @bill_item = BillItem.find(params[:id])
-    @auth = @bill_item.auth;
     render 'auths/show'
   end
   
   def update
     @bill_item = BillItem.find(params[:id])
     if @bill_item.update_attributes(params[:bill_item])
-      redirect_to(auth_path(@bill_item.auth_id),
-                  :notice => "Updated successfully")
+      redirect_to @auth, :notice => "Updated successfully"
     else
-      render 'edit'
+      render 'auths/show'
     end
   end
 
   def destroy
     @bill_item = BillItem.find(params[:id])
     @bill_item.destroy
-    redirect_to auth_path(@bill_item.auth_id,
-                          :notice => 'Therapy deleted')
+    redirect_to @auth, :notice => 'Therapy deleted'
+  end
+
+  private
+
+  def find_auth_and_invoice
+    @auth = Auth.find(params[:auth_id])
+    @invoice = current_invoice
   end
 end
