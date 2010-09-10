@@ -12,10 +12,18 @@
   <%= @auth.max_sessions %>
   <br/>
   <b>Used Sessions:</b>
-  <%= @auth.bill_items.maximum(:quantity) %>
+  <%= @auth.maximum_quantity %>
   <br/>
   <b>Amount:</b>
-  <%= number_to_currency @auth.bill_items.sum(:total) %>
+  <%= number_to_currency @auth.total %>
 </p>
 
-<%= render 'auths/details' %>
+<%= render :partial => 'bill_items/edit_bill_items', :locals => {
+           :bill_items => @auth.bill_items } %>
+
+<%= link_to 'New Patient Authorization', new_auth_path %> |
+<% if !@invoice.nil? %>
+<%= link_to 'Show current invoice', @invoice %> |
+<% end %>
+<%= link_to 'Show patients', patients_path %>
+

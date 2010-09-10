@@ -25,12 +25,32 @@
     </thead>
     <tbody>
       <% bill_items.each do |bill_item|
-      if bill_item == @bill_item
+           if bill_item == @bill_item
       %>
-      <%= render :partial => 'bill_items/form', :locals => { :f => f } %>
-      <% else %>
-      <%= render bill_item %>
-      <% end %>
+             <%= render :partial => 'bill_items/form', :locals => { :f => f } %>
+           <% else %>
+	   <tr>
+	     <td>
+	       <%= link_to bill_item.therapy.select_name,
+	       therapy_path(bill_item.therapy) %>
+	     </td>
+	     <td class="qty">
+	       <%= bill_item.quantity %>
+	     </td>
+	     <td class="price">
+	       <%= number_to_currency bill_item.unit_price %>
+	     </td>
+	     <td class="price">
+	       <%= number_to_currency bill_item.total %>
+	     </td>
+	     <td class='link'>
+	       <%= link_to_edit edit_auth_bill_item_path(@auth, bill_item) %>
+	     </td>
+	     <td class='link'>
+	       <%= link_to_destroy auth_bill_item_path(@auth, bill_item) %>
+	     </td>
+	   </tr>
+	   <% end %>
       <% end %>
       <% if @bill_item.new_record? %>
       <%= render :partial => 'bill_items/form', :locals => { :f => f } %>
@@ -38,4 +58,3 @@
     </tbody>
   </table>
 <% end %>
-

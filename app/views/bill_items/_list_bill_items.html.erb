@@ -1,0 +1,30 @@
+<table>
+  <caption><%= caption ||= 'Therapies' %></caption>
+  <thead>
+    <tr>
+      <th>Therapy</th>
+      <th class="qty">Quantity</th>
+      <th class="price">Unit price</th>
+      <th class="price">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bill_items.each do |bill_item| %>
+    <tr>
+      <td>
+	<%= link_to bill_item.therapy.select_name,
+	therapy_path(bill_item.therapy) %>
+      </td>
+      <td class="qty">
+	<%= bill_item.quantity %>
+      </td>
+      <td class="price">
+	<%= number_to_currency bill_item.unit_price %>
+      </td>
+      <td class="price">
+	<%= number_to_currency bill_item.total %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

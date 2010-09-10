@@ -1,6 +1,6 @@
+# only html formatting tested
+
 class PaymentsController < ApplicationController
-  # GET /payments
-  # GET /payments.xml
   def index
     @payments = Payment.all
 
@@ -10,8 +10,6 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # GET /payments/1
-  # GET /payments/1.xml
   def show
     @payment = Payment.find(params[:id])
 
@@ -21,8 +19,6 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # GET /payments/new
-  # GET /payments/new.xml
   def new
     @payment = Payment.new
 
@@ -32,7 +28,6 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # GET /payments/1/edit
   def edit
     @payment = Payment.find(params[:id])
   end
@@ -51,8 +46,6 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # PUT /payments/1
-  # PUT /payments/1.xml
   def update
     @payment = Payment.find(params[:id])
 
@@ -67,8 +60,6 @@ class PaymentsController < ApplicationController
     end
   end
 
-  # DELETE /payments/1
-  # DELETE /payments/1.xml
   def destroy
     @payment = Payment.find(params[:id])
     @payment.destroy

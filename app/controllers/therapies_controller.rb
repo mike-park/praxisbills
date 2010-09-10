@@ -1,8 +1,7 @@
 class TherapiesController < ApplicationController
-  # GET /therapies
-  # GET /therapies.xml
   def index
-    @therapies = Therapy.all
+    @therapies = Therapy.paginate :page => params[:page], :per_page => 10,
+    :order => "code"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +9,6 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # GET /therapies/1
-  # GET /therapies/1.xml
   def show
     @therapy = Therapy.find(params[:id])
 
@@ -21,8 +18,6 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # GET /therapies/new
-  # GET /therapies/new.xml
   def new
     @therapy = Therapy.new
 
@@ -32,13 +27,10 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # GET /therapies/1/edit
   def edit
     @therapy = Therapy.find(params[:id])
   end
 
-  # POST /therapies
-  # POST /therapies.xml
   def create
     @therapy = Therapy.new(params[:therapy])
 
@@ -53,8 +45,6 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # PUT /therapies/1
-  # PUT /therapies/1.xml
   def update
     @therapy = Therapy.find(params[:id])
 
@@ -69,8 +59,6 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # DELETE /therapies/1
-  # DELETE /therapies/1.xml
   def destroy
     @therapy = Therapy.find(params[:id])
     @therapy.destroy

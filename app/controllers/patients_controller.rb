@@ -1,8 +1,7 @@
 class PatientsController < ApplicationController
-  # GET /patients
-  # GET /patients.xml
   def index
-    @patients = Patient.all
+    @patients = Patient.paginate :page => params[:page], :per_page => 10,
+    :order => "last_name"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +9,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients/1
-  # GET /patients/1.xml
   def show
     @patient = Patient.find(params[:id])
 
@@ -21,8 +18,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients/new
-  # GET /patients/new.xml
   def new
     @patient = Patient.new
 
@@ -32,13 +27,10 @@ class PatientsController < ApplicationController
     end
   end
 
-  # GET /patients/1/edit
   def edit
     @patient = Patient.find(params[:id])
   end
 
-  # POST /patients
-  # POST /patients.xml
   def create
     @patient = Patient.new(params[:patient])
 
@@ -54,8 +46,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # PUT /patients/1
-  # PUT /patients/1.xml
   def update
     @patient = Patient.find(params[:id])
 
@@ -70,8 +60,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  # DELETE /patients/1
-  # DELETE /patients/1.xml
   def destroy
     @patient = Patient.find(params[:id])
     @patient.destroy

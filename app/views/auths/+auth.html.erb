@@ -1,9 +1,0 @@
-  <tr>
-    <td><%= auth.patient.select_name %>
-    <td class='qty'><%= auth.max_sessions %></td>
-    <td class='qty'><%= auth.bill_items.maximum(:quantity) %></td>
-    <td class='price'><%= number_to_currency auth.bill_items.sum(:total) %></td>
-    <td class='link'><%= link_to 'Show', auth_path(auth) %></td>
-    <td class='link'><%= link_to 'Edit', edit_auth_path(auth) %></td>
-    <td class='link'><%= link_to 'Destroy', auth_path(auth), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>

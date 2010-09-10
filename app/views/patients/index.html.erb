@@ -15,12 +15,14 @@
     <td><%= patient.first_name %></td>
     <td><%= patient.last_name %></td>
     <td><%= patient.dob %></td>
-    <td><%= link_to 'Show', patient %></td>
-    <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-    <td><%= link_to 'Destroy', patient, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class='link'><%= link_to_show patient %></td>
+    <td class='link'><%= link_to_edit edit_patient_path(patient) %></td>
+    <td class='link'><%= link_to_destroy patient %></td>
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @patients, :class => 'digg_pagination' %>
 
 <br />
 

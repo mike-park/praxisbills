@@ -1,29 +1,28 @@
-<h1>Listing therapies</h1>
+<table class="therapy">
+  <caption>Therapies</caption>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th class='price'>Price</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<table>
-  <tr>
-    <th>Code</th>
-    <th class='price'>Price</th>
-    <th>Short description</th>
-    <th>Description</th>
-    <th>Valid from</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @therapies.each do |therapy| %>
-  <tr>
-    <td><%= therapy.code %></td>
-    <td class='price'><%= number_to_currency therapy.price %></td>
-    <td><%= therapy.short_description %></td>
-    <td><%= therapy.description %></td>
-    <td><%= therapy.valid_from %></td>
-    <td><%= link_to 'Edit', edit_therapy_path(therapy) %></td>
-    <td><%= link_to 'Destroy', therapy, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @therapies.each do |therapy| %>
+    <tr>
+      <td><%= therapy.code %></td>
+      <td class='price'><%= number_to_currency therapy.price %></td>
+      <td><strong><%= therapy.short_description %></strong><br/>
+      <%= therapy.description %></td>
+      <td class='link'><%= link_to_edit edit_therapy_path(therapy) %></td>
+      <td class='link'><%= link_to_destroy therapy %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
+<%= will_paginate @therapies, :class => 'digg_pagination' %>
 <%= link_to 'New Therapy', new_therapy_path %>

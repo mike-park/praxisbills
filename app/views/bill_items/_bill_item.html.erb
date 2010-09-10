@@ -1,8 +1,0 @@
-  <tr>
-    <td><%= link_to bill_item.therapy.select_name, therapy_path(bill_item.therapy) %></td>
-    <td class="qty"><%= bill_item.quantity %></td>
-    <td class="price"><%= number_to_currency bill_item.unit_price %></td>
-    <td class="price"><%= number_to_currency bill_item.total %></td>
-    <td class='link'><%= link_to 'Edit', edit_auth_bill_item_path(@auth, bill_item) %></td>
-    <td class='link'><%= link_to 'Delete', auth_bill_item_path(@auth, bill_item), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>

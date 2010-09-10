@@ -16,18 +16,26 @@
       <tr>
 	<td><%= auth.patient.select_name %>
 	<td class='qty'><%= auth.max_sessions %></td>
-	<td class='qty'><%= auth.bill_items.maximum(:quantity) %></td>
-	<td class='price'><%= number_to_currency auth.bill_items.sum(:total) %></td>
-	<td class='link'><%= link_to 'Detail', auth_path(auth) %></td>
-	<td class='link'><%= link_to 'Edit', edit_auth_path(auth) %></td>
-	<td class='link'><%= link_to 'Delete', auth_path(auth), :confirm => 'Are you sure?', :method => :delete %></td>
+	<td class='qty'><%= auth.maximum_quantity %></td>
+	<td class='price'><%= number_to_currency auth.total %></td>
+	<td class='link'><%= link_to_show auth_path(auth) %></td>
+	<td class='link'><%= link_to_edit edit_auth_path(auth) %></td>
+	<td class='link'><%= link_to_destroy auth_path(auth) %></td>
       </tr>
     <% end -%>
     <tr class='totals'>
-      <td class='totals'><%= pluralize(auths.count, 'patient') %></td>
-      <td class='totals qty'><%= auths.map(&:max_sessions).sum %></td>
-      <td class='totals qty'><%= auths.map(&:maximum_quantity).sum %></td>
-      <td class="totals price"><%= number_to_currency auths.map(&:total).sum %></td>
+      <td class='totals'>
+	<%= pluralize(auths.count, 'patient') %>
+      </td>
+      <td class='totals qty'>
+	<%= Auth.max_sessions(auths) %>
+      </td>
+      <td class='totals qty'>
+	<%= Auth.quantity(auths) %>
+      </td>
+      <td class="totals price">
+	<%= number_to_currency Auth.total(auths) %>
+      </td>
       <td></td>
       <td></td>
       <td></td>

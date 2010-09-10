@@ -3,8 +3,9 @@
   <thead>
     <tr>
       <th>Sent date</th>
-      <th class='price'>Billed Amount</th>
-      <th class='price'>Received Amount</th>
+      <th class='price'>Billed</th>
+      <th class='price'>Received</th>
+      <th class='price'>Owed</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,12 +16,30 @@
     <% invoices.each do |invoice| %>
     <tr>
       <td><%= invoice.sent_date %></td>
-      <td class='price'><%= number_to_currency invoice.auths.map(&:total).sum %></td>
-      <td class='price'><%= number_to_currency invoice.payments.sum(:amount) %></td>
-      <td><%= link_to 'Details', invoice %></td>
-      <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-      <td><%= link_to 'Delete', invoice, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td class='price'><%= number_to_currency invoice.billed_amount %></td>
+      <td class='price'><%= number_to_currency invoice.received_amount %></td>
+      <td class='price'><%= number_to_currency invoice.owed_to_us %></td>
+      <td class='link'><%= link_to_show invoice %></td>
+      <td class='link'><%= link_to_edit edit_invoice_path(invoice) %></td>
+      <td class='link'><%= link_to_destroy invoice %></td>
     </tr>
     <% end %>
+    <tr class='totals'>
+      <td class='totals'>
+	<%= pluralize(invoices.count, 'invoice') %>
+      </td>
+      <td class="totals price">
+	<%= number_to_currency Invoice.billed_amount(invoices) %>
+      </td>
+      <td class="totals price">
+	<%= number_to_currency Invoice.received_amount(invoices) %>
+      </td>
+      <td class="totals price">
+	<%= number_to_currency Invoice.owed_to_us(invoices) %>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
   </tbody>
 </table>

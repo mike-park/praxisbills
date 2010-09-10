@@ -29,6 +29,7 @@ class Auth < ActiveRecord::Base
   attr_accessible :krankenkasse, :doctor, :max_sessions,
                   :billed, :patient_id, :invoice_id
 
+  # summary information from sub tables
   def total
     bill_items.sum(:total) || 0
   end
@@ -37,6 +38,20 @@ class Auth < ActiveRecord::Base
     bill_items.maximum(:quantity) || 0
   end
 
+  # summary information over a collection of auths
+  def self.total(auths)
+    auths.map(&:total).sum
+  end
+
+  def self.quantity(auths)
+    auths.map(&:maximum_quantity).sum
+  end
+
+  def self.max_sessions(auths)
+    auths.sum(:max_sessions)
+  end
+  
+  # order auths by patient name alphabetically
   def <=>(other)
     patient.select_name.casecmp(other.patient.select_name)
   end

@@ -1,3 +1,5 @@
+# only html formatting tested!!
+
 class InvoicesController < ApplicationController
   def index
     @paid_invoices = Invoice.paid
@@ -9,8 +11,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # GET /invoices/1
-  # GET /invoices/1.xml
   def show
     @invoice = Invoice.find(params[:id])
     self.current_invoice = @invoice
@@ -21,8 +21,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # GET /invoices/new
-  # GET /invoices/new.xml
   def new
     @invoice = Invoice.new
 
@@ -32,14 +30,11 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
     self.current_invoice = @invoice
   end
 
-  # POST /invoices
-  # POST /invoices.xml
   def create
     @invoice = Invoice.new(params[:invoice])
 
@@ -55,8 +50,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # PUT /invoices/1
-  # PUT /invoices/1.xml
   def update
     @invoice = Invoice.find(params[:id])
 
@@ -72,8 +65,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # DELETE /invoices/1
-  # DELETE /invoices/1.xml
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy

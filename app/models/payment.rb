@@ -16,4 +16,11 @@ class Payment < ActiveRecord::Base
 
   validates_presence_of :invoice_id, :rec_date, :amount
   validates_numericality_of :amount
+
+  attr_accessible :invoice_id, :rec_date, :amount
+
+  # sum of a collection of payments
+  def self.amount(payments)
+    payments.map(&:amount).sum
+  end
 end
