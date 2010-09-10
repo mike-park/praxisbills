@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Home Page</h1>
+<p>Change default language to: 
+
+<ul>
+  <% I18n.available_locales.each do |locale| %>
+    <% unless locale == I18n.locale %>
+    <li>
+      <%= link_to I18n.t("meta.language_name", :locale => locale.to_sym),
+      root_path(:locale => locale) %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
+</p>

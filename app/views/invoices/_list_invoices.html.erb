@@ -15,7 +15,7 @@
   <tbody>
     <% invoices.each do |invoice| %>
     <tr>
-      <td><%= invoice.sent_date %></td>
+      <td><%= l invoice.sent_date %></td>
       <td class='price'><%= number_to_currency invoice.billed_amount %></td>
       <td class='price'><%= number_to_currency invoice.received_amount %></td>
       <td class='price'><%= number_to_currency invoice.owed_to_us %></td>

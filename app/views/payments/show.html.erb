@@ -1,10 +1,10 @@
 <h1>Details for Payment</h1>
 <p>
   <b>Invoice:</b>
-  <%= @payment.invoice.sent_date %>
+  <%= l @payment.invoice.sent_date %>
   <br/>
   <b>Received date:</b>
-  <%= @payment.rec_date %>
+  <%= l @payment.rec_date %>
   <br/>
   <b>Amount:</b>
   <%= number_to_currency @payment.amount %>

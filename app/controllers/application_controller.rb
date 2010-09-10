@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_user_language
 
   protected
 
@@ -34,4 +35,9 @@ class ApplicationController < ActionController::Base
     obj
   end
 
+  private
+  
+  def set_user_language
+    I18n.locale = params[:locale] if params[:locale]
+  end
 end

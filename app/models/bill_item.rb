@@ -20,7 +20,12 @@ class BillItem < ActiveRecord::Base
   before_save :update_prices
 
   validates_presence_of :auth_id, :therapy_id, :quantity
-  validates_numericality_of :quantity
+
+  validates_numericality_of :quantity, 
+                            :unless => "quantity.blank?"
+  validates_numericality_of :unit_price,
+                            :unless => "unit_price.blank?"
+
   validates_uniqueness_of :therapy_id,
                           :scope => "auth_id",
                           :message => 'is already referenced by this authorization'

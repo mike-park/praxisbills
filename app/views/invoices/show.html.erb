@@ -3,7 +3,9 @@
 <h1>Details for Invoice</h1>
 <p>
   <b>Sent date:</b>
-  <%= @invoice.sent_date.to_s %>, <%= time_ago_in_words(@invoice.sent_date) %> ago
+  <%= l @invoice.sent_date %>,
+  <%= time_ago_in_words(@invoice.sent_date) %>
+  <%= t :ago %>
   <br/>
   <b>Status:</b>
   <%= invoice_status(@invoice) %>

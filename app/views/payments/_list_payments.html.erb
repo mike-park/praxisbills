@@ -11,7 +11,7 @@
   <tbody>
     <% payments.each do |payment| %>
     <tr>
-      <td><%= payment.rec_date %></td>
+      <td><%= l payment.rec_date %></td>
       <td class='price'><%= number_to_currency payment.amount %></td>
       <td class='link'><%= link_to_edit edit_payment_path(payment) %></td>
       <td class='link'><%= link_to_destroy payment %></td>

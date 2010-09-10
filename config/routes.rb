@@ -1,4 +1,6 @@
 Praxisbills1::Application.routes.draw do
+  filter :locale
+
   root :to => "pages#home"
 
   resources :patients do
