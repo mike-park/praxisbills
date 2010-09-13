@@ -1,6 +1,10 @@
 Praxisbills1::Application.routes.draw do
   filter :locale
 
+  resource :account, :controller => "users"
+  resources :users
+  resource :user_session
+
   root :to => "pages#home"
 
   resources :patients do
