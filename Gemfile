@@ -5,6 +5,7 @@ gem 'will_paginate', '~> 3.0.pre2'
 gem 'routing-filter'
 gem 'delocalize'
 gem "authlogic"
+gem 'tabletastic', '~> 0.2.0.pre6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

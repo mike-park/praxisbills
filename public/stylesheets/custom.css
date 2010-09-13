@@ -188,6 +188,8 @@ table td {
     background: #ddd;
 }
 
+/* pagination */
+
 .digg_pagination {
   background: white;
   /* self-clearing method: */ }
@@ -232,3 +234,4 @@ table td {
     height: 1%; }
   *:first-child+html .digg_pagination {
       overflow: hidden; }
+
