@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100905145132
+# Schema version: 20101103211555
 #
 # Table name: auths
 #
@@ -12,6 +12,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  invoice_id   :integer
+#  rec_amount   :decimal(, )
 #
 
 class Auth < ActiveRecord::Base
@@ -20,14 +21,18 @@ class Auth < ActiveRecord::Base
 
   has_many :bill_items, :order => "created_at", :dependent => :destroy
 
+  default_scope includes(:patient).order('patients.last_name')
+
   validates_presence_of :patient_id
+  
   validates_uniqueness_of :patient_id,
                           :scope => "invoice_id",
                           :if => :invoice_id,
                           :message => 'is already referenced by this invoice'
+  validates_numericality_of :rec_amount, :unless => "rec_amount.blank?"
 
   attr_accessible :krankenkasse, :doctor, :max_sessions,
-                  :billed, :patient_id, :invoice_id
+  :billed, :patient_id, :invoice_id, :rec_amount
 
   # summary information from sub tables
   def total
@@ -38,6 +43,10 @@ class Auth < ActiveRecord::Base
     bill_items.maximum(:quantity) || 0
   end
 
+  def diff
+    (rec_amount || 0) - total
+  end
+  
   # summary information over a collection of auths
   def self.total(auths)
     auths.map(&:total).sum
@@ -49,6 +58,14 @@ class Auth < ActiveRecord::Base
 
   def self.max_sessions(auths)
     auths.sum(:max_sessions)
+  end
+  
+  def self.rec_amount(auths)
+    auths.sum(:rec_amount)
+  end
+  
+  def self.diff(auths)
+    auths.sum(:rec_amount) - self.total(auths)
   end
   
   # order auths by patient name alphabetically

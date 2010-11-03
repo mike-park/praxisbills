@@ -151,6 +151,10 @@ div #error_explanation {
     margin-top: 20px;  
 }
 
+/* override blueprint */
+legend      { font-size:100%;}
+textarea    { height: 100px;}
+	      
 /* tables */
 caption {
     text-align: center;
@@ -175,6 +179,7 @@ table td {
 
 .qty, .price {
     text-align: right;
+    white-space: nowrap;
 }
 
 .link {

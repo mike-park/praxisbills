@@ -1,0 +1,40 @@
+/*form.formtastic fieldset { border: 1px solid black; }*/
+/* form width */
+form.formtastic { width: 700px; margin-left: 1em; }
+
+/* spacing between fields */
+form.formtastic fieldset > ol > li { margin-bottom:0.5em; }
+
+/* smaller text area width */
+form.formtastic fieldset > ol > li.text textarea { width:75%; }
+
+/* label above input field & bold */
+form.formtastic fieldset > ol > li label { display:block; float:none; padding-top:.2em; font-weight: bold; }
+
+/* RADIO BUTTONS */
+/* radio buttons adjust vertical spacing */
+form.formtastic fieldset > ol > li.radio fieldset ol { margin-bottom:0; }
+form.formtastic fieldset > ol > li.radio fieldset ol li { margin:0.1em 0 0.1em 0; }
+
+/* if radio buttons horizontal uncomment */
+/*
+  form.formtastic fieldset > ol > li.radio fieldset ol li { float:left; margin-right: 0.5em; }
+  */
+
+/* normal weight for radio labels */
+form.formtastic fieldset > ol > li.radio fieldset ol li label { font-weight: normal; }
+
+/* CHECK_BOXES */
+form.formtastic fieldset > ol > li.check_boxes fieldset ol { margin-bottom:0em; }
+
+/* BOOLEAN OVERRIDES */
+form.formtastic fieldset > ol > li.boolean label { padding-left:0; width:auto; }
+
+/* buttons left aligned */
+form.formtastic fieldset.buttons { padding-left:0; padding-top: 1.5ex; }
+
+
+form.formtastic fieldset > ol > li p.inline-errors { color:#cc0000; margin:0.5em 0 0 0; }
+form.formtastic ul.errors { color:#cc0000; margin:0.5em 0 1.5em 1em; list-style:square; }
+form.formtastic fieldset > ol > li.error { color:#cc0000; }
+

@@ -1,0 +1,35 @@
+= semantic_form_for @payment do |f|
+  = f.semantic_errors :notes, :rec_date, :amount, :auths
+  - require 'ap'
+  = f.inputs do
+
+    %h1 Payment
+    %div
+      %b Invoice Date:
+      = l @payment.invoice.sent_date
+      %br
+      %b Invoiced Amount
+      = number_to_currency @payment.invoice.billed_amount
+
+    = f.input :rec_date
+    = f.input :amount, :input_html => {:size => 10}
+
+    %h1 Patients
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Billed
+          %th Received
+      %tbody
+        = f.semantic_fields_for :auths do |fa|
+          %tr
+            %td= fa.object.patient.select_name
+            %td= number_to_currency fa.object.total
+            %td= fa.input :rec_amount, :label => false, :input_html => {:size => 7}
+    = f.input :notes, :input_html => { :rows => 4 }
+  = f.buttons
+
+
+

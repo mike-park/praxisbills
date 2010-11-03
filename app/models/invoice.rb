@@ -14,8 +14,8 @@ class Invoice < ActiveRecord::Base
   has_many :auths, :dependent => :destroy
   has_many :payments, :order => "rec_date", :dependent => :destroy
 
-  scope :paid, :conditions => { :open => false }
-  scope :unpaid, :conditions => { :open => true }
+  scope :paid, where(:open => false).order('sent_date desc')
+  scope :unpaid, where(:open => true).order('sent_date desc')
 
   validates_presence_of :sent_date
   attr_accessible :sent_date, :open

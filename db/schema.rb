@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100912155835) do
+ActiveRecord::Schema.define(:version => 20101103211555) do
 
   create_table "auths", :force => true do |t|
     t.string   "krankenkasse"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20100912155835) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "invoice_id"
+    t.decimal  "rec_amount"
   end
 
   create_table "bill_items", :force => true do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20100912155835) do
     t.decimal  "amount",     :precision => 8, :scale => 2, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "notes"
   end
 
   create_table "therapies", :force => true do |t|

@@ -23,4 +23,9 @@ module ApplicationHelper
                       :alt => 'Delete'), path,
     :confirm => 'Are you sure?', :method => :delete
   end
+
+  def number_to_euro(amount)
+    number_to_currency(amount) unless amount.blank?
+  end
+  
 end

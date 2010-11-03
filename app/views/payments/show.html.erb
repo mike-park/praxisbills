@@ -8,7 +8,12 @@
   <br/>
   <b>Amount:</b>
   <%= number_to_currency @payment.amount %>
+  <br/>
+  <b>Notes:</b>
+  <%= @payment.notes %>
 </p>
+
+<%= render 'auths/list_auths', :auths => @payment.auths %>
 
 <%= link_to 'Edit', edit_payment_path(@payment) %> |
 <%= link_to 'Back', payments_path %>
