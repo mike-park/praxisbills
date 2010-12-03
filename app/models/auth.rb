@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101103211555
+# Schema version: 20101203131904
 #
 # Table name: auths
 #
@@ -12,7 +12,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  invoice_id   :integer
-#  rec_amount   :decimal(, )
+#  rec_amount   :decimal(8, 2)
 #
 
 class Auth < ActiveRecord::Base
