@@ -1,0 +1,23 @@
+%h1 Listing insurers
+
+%table
+  %tr
+    %th Abbr
+    %th Name
+    %th Active pricelist
+    %th
+    %th
+    %th
+
+  - @insurers.each do |insurer|
+    %tr
+      %td= insurer.abbr
+      %td= insurer.name
+      %td= insurer.active_pricelist
+      %td= link_to 'Show', insurer
+      %td= link_to 'Edit', edit_insurer_path(insurer)
+      %td= link_to 'Destroy', insurer, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Insurer', new_insurer_path

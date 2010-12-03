@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Abbr:
+  = @insurer.abbr
+%p
+  %b Name:
+  = @insurer.name
+%p
+  %b Active pricelist:
+  = @insurer.active_pricelist
+
+= link_to 'Edit', edit_insurer_path(@insurer)
+\|
+= link_to 'Back', insurers_path
