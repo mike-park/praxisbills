@@ -12,7 +12,7 @@
 
 class Pricelist < ActiveRecord::Base
   has_and_belongs_to_many :insurers
-  has_many :therapies
+  has_many :therapies, :dependent => :destroy
   validates_presence_of :start_date
 
   def name
