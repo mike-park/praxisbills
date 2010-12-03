@@ -1,0 +1,21 @@
+%h1 Listing pricelists
+
+%table
+  %tr
+    %th Start date
+    %th Note
+    %th
+    %th
+    %th
+
+  - @pricelists.each do |pricelist|
+    %tr
+      %td= pricelist.start_date
+      %td= pricelist.note
+      %td= link_to 'Show', pricelist
+      %td= link_to 'Edit', edit_pricelist_path(pricelist)
+      %td= link_to 'Destroy', pricelist, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Pricelist', new_pricelist_path

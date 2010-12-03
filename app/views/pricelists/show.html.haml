@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Start date:
+  = @pricelist.start_date
+%p
+  %b Note:
+  = @pricelist.note
+
+= link_to 'Edit', edit_pricelist_path(@pricelist)
+\|
+= link_to 'Back', pricelists_path
