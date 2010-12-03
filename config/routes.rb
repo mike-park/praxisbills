@@ -1,4 +1,8 @@
 Praxisbills1::Application.routes.draw do
+  resources :pricelists
+
+  resources :insurers
+
   filter :locale
 
   resource :account, :controller => "users"

@@ -10,18 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101103211555) do
+ActiveRecord::Schema.define(:version => 20101203131904) do
 
   create_table "auths", :force => true do |t|
     t.string   "krankenkasse"
     t.string   "doctor"
-    t.integer  "max_sessions", :default => 0
-    t.boolean  "billed",       :default => false
-    t.integer  "patient_id",                      :null => false
+    t.integer  "max_sessions",                               :default => 0
+    t.boolean  "billed",                                     :default => false
+    t.integer  "patient_id",                                                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "invoice_id"
-    t.decimal  "rec_amount"
+    t.decimal  "rec_amount",   :precision => 8, :scale => 2
   end
 
   create_table "bill_items", :force => true do |t|
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(:version => 20101103211555) do
     t.decimal  "total",      :precision => 8, :scale => 2, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "insurers", :force => true do |t|
+    t.string   "abbr",                :null => false
+    t.string   "name",                :null => false
+    t.integer  "active_pricelist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "insurers_pricelists", :id => false, :force => true do |t|
+    t.integer "insurer_id",   :null => false
+    t.integer "pricelist_id", :null => false
   end
 
   create_table "invoices", :force => true do |t|
@@ -58,14 +71,22 @@ ActiveRecord::Schema.define(:version => 20101103211555) do
     t.text     "notes"
   end
 
+  create_table "pricelists", :force => true do |t|
+    t.date     "start_date", :null => false
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "therapies", :force => true do |t|
-    t.integer  "code",                                                             :null => false
-    t.decimal  "price",             :precision => 8, :scale => 2, :default => 0.0, :null => false
+    t.integer  "code",                               :null => false
+    t.decimal  "price",             :default => 0.0, :null => false
     t.string   "short_description"
     t.text     "description"
     t.date     "valid_from"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pricelist_id"
   end
 
   create_table "users", :force => true do |t|

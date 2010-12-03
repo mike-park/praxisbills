@@ -13,7 +13,7 @@
     %tr
       %td= insurer.abbr
       %td= insurer.name
-      %td= insurer.active_pricelist
+      %td= link_to(insurer.active_pricelist.start_date, insurer.active_pricelist)
       %td= link_to 'Show', insurer
       %td= link_to 'Edit', edit_insurer_path(insurer)
       %td= link_to 'Destroy', insurer, :confirm => 'Are you sure?', :method => :delete

@@ -1,24 +1,26 @@
 # == Schema Information
-# Schema version: 20100905144037
+# Schema version: 20101203131904
 #
 # Table name: therapies
 #
 #  id                :integer         not null, primary key
 #  code              :integer         not null
-#  price             :decimal(8, 2)   default(0.0), not null
+#  price             :decimal(, )     default(0.0), not null
 #  short_description :string(255)
 #  description       :text
 #  valid_from        :date
 #  created_at        :datetime
 #  updated_at        :datetime
+#  pricelist_id      :integer
 #
 
 class Therapy < ActiveRecord::Base
   has_many :bill_items
+  belongs_to :pricelist
 
-  validates_presence_of :code, :price, :description, :valid_from
+  validates_presence_of :code, :price, :short_description, :pricelist_id
 
-  validates_uniqueness_of :code
+  validates_uniqueness_of :code, :scope => :pricelist_id
 
   def select_name
     "#{code} #{short_description || description}".truncate(45)

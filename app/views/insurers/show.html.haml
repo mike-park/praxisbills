@@ -8,7 +8,7 @@
   = @insurer.name
 %p
   %b Active pricelist:
-  = @insurer.active_pricelist
+  = link_to(@insurer.active_pricelist.start_date, @insurer.active_pricelist)
 
 = link_to 'Edit', edit_insurer_path(@insurer)
 \|

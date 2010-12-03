@@ -7,6 +7,8 @@
   %b Note:
   = @pricelist.note
 
+= render 'therapies/therapy', :therapies => @pricelist.therapies
+
 = link_to 'Edit', edit_pricelist_path(@pricelist)
 \|
 = link_to 'Back', pricelists_path
