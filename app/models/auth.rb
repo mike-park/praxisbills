@@ -59,7 +59,7 @@ class Auth < ActiveRecord::Base
   def self.max_sessions(auths)
     auths.sum(:max_sessions)
   end
-  
+
   def self.rec_amount(auths)
     auths.sum(:rec_amount)
   end
