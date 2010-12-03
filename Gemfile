@@ -6,7 +6,9 @@ gem 'routing-filter'
 gem 'delocalize'
 gem "authlogic"
 gem 'tabletastic', '~> 0.2.0.pre6'
-gem 'haml'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'rails3-generators'
 gem 'formtastic'
 
 # Bundle edge Rails instead:
