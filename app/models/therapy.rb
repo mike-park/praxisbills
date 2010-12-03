@@ -18,8 +18,8 @@ class Therapy < ActiveRecord::Base
   has_many :bill_items
   belongs_to :pricelist
 
-  validates_presence_of :code, :price, :short_description, :pricelist_id
-
+  validates_presence_of :code, :short_description, :pricelist_id
+  validates_numericality_of :price
   validates_uniqueness_of :code, :scope => :pricelist_id
 
   def select_name
