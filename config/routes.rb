@@ -14,7 +14,7 @@ Praxisbills1::Application.routes.draw do
   resources :patients do
     resources :auths
   end
-  
+
   resources :invoices do
     resources :auths
   end
@@ -25,6 +25,11 @@ Praxisbills1::Application.routes.draw do
 
   resources :payments
   resources :therapies
+
+  namespace :api do
+    match 'last_auth'
+  end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

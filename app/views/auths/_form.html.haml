@@ -1,0 +1,22 @@
+= semantic_form_for(@auth) do |f|
+  = f.semantic_errors
+  = f.hidden_field :invoice_id
+
+  = f.inputs do
+    = f.input :patient, :input_html => { :onchange => 'patientChanged(this);' }
+    %div OR #{link_to 'Add a new patient', new_patient_path}
+    = f.input :insurer
+    = f.input :doctor
+    = f.input :billed
+  = f.buttons
+
+:javascript
+  function patientChanged(elem) {
+  $.ajax({ data: { id: $("#auth_patient_id").val() },
+  dataType: "json",
+  success: function (data, textStatus, req) {
+  $("#auth_insurer_id").val(data.auth.insurer_id);
+  },
+  url: "#{api_last_auth_url}"
+  });
+  }
