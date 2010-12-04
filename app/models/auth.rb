@@ -18,12 +18,13 @@
 class Auth < ActiveRecord::Base
   belongs_to :patient
   belongs_to :invoice
+  belongs_to :insurer
 
   has_many :bill_items, :order => "created_at", :dependent => :destroy
 
   default_scope includes(:patient).order('patients.last_name')
 
-  validates_presence_of :patient_id
+  validates_presence_of :patient_id, :insurer_id
   
   validates_uniqueness_of :patient_id,
                           :scope => "invoice_id",
@@ -31,8 +32,8 @@ class Auth < ActiveRecord::Base
                           :message => 'is already referenced by this invoice'
   validates_numericality_of :rec_amount, :unless => "rec_amount.blank?"
 
-  attr_accessible :krankenkasse, :doctor, :max_sessions,
-  :billed, :patient_id, :invoice_id, :rec_amount
+  attr_accessible :doctor, :max_sessions, :billed,
+  :patient_id, :invoice_id, :rec_amount, :insurer_id
 
   # summary information from sub tables
   def total

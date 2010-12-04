@@ -10,18 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203131904) do
+ActiveRecord::Schema.define(:version => 20101203233457) do
 
   create_table "auths", :force => true do |t|
-    t.string   "krankenkasse"
     t.string   "doctor"
-    t.integer  "max_sessions",                               :default => 0
-    t.boolean  "billed",                                     :default => false
-    t.integer  "patient_id",                                                    :null => false
+    t.integer  "max_sessions", :default => 0
+    t.boolean  "billed",       :default => false
+    t.integer  "patient_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "invoice_id"
-    t.decimal  "rec_amount",   :precision => 8, :scale => 2
+    t.decimal  "rec_amount"
+    t.integer  "insurer_id",                      :null => false
   end
 
   create_table "bill_items", :force => true do |t|
