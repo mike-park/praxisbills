@@ -25,6 +25,7 @@ class Patient < ActiveRecord::Base
   def select_name
     [last_name, first_name].join(", ")
   end
+  alias_method :to_label, :select_name 
 
   def strip_white_space
     first_name.strip! unless first_name.nil?

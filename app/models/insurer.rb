@@ -16,4 +16,10 @@ class Insurer < ActiveRecord::Base
   belongs_to :active_pricelist, :class_name => 'Pricelist'
   
   validates_presence_of :abbr, :name
+
+  default_scope order('abbr')
+
+  def to_label
+    "#{abbr}: #{name}"
+  end
 end
