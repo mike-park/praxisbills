@@ -15,7 +15,7 @@
     <caption>Therapies</caption>
     <thead>
       <tr>
-	<th>Therapy</th>
+	<th>Therapy (<%= @auth.insurer.active_pricelist.start_date %>)</th>
 	<th class="qty">Quantity</th>
 	<th class="price">Unit price</th>
 	<th class="price">Total</th>
