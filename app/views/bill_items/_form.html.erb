@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= f.collection_select :therapy_id, Therapy.order("code").all,
+    <%= f.collection_select :therapy_id, @auth.insurer.active_pricelist.therapies.order("code").all,
     :id, :select_name, { :prompt => 'Therapy type' }, :autofocus => true %>
   </td>
   <td class="qty">
