@@ -21,6 +21,9 @@ class Patient < ActiveRecord::Base
                           :message => 'name already exists'
 
   before_save :strip_white_space
+
+  # XXX is this sqlite only LOWER?
+  default_scope order('LOWER(last_name)')
   
   def select_name
     [last_name, first_name].join(", ")
