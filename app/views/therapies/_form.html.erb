@@ -1,4 +1,4 @@
-<%= form_for(@therapy) do |f| %>
+<%= semantic_form_for(@therapy) do |f| %>
   <% if @therapy.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@therapy.errors.count, "error") %> prohibited this therapy from being saved:</h2>
@@ -9,6 +9,10 @@
       <% end %>
       </ul>
     </div>
+  <% end %>
+
+  <%= f.inputs do %>
+  <%= f.input :pricelist %>
   <% end %>
 
   <div class="field">
