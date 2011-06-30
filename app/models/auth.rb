@@ -1,20 +1,3 @@
-# == Schema Information
-# Schema version: 20101203131904
-#
-# Table name: auths
-#
-#  id           :integer         not null, primary key
-#  krankenkasse :string(255)
-#  doctor       :string(255)
-#  max_sessions :integer         default(0)
-#  billed       :boolean
-#  patient_id   :integer         not null
-#  created_at   :datetime
-#  updated_at   :datetime
-#  invoice_id   :integer
-#  rec_amount   :decimal(8, 2)
-#
-
 class Auth < ActiveRecord::Base
   belongs_to :patient
   belongs_to :invoice
@@ -74,3 +57,20 @@ class Auth < ActiveRecord::Base
     patient.select_name.casecmp(other.patient.select_name)
   end
 end
+
+# == Schema Information
+#
+# Table name: auths
+#
+#  id           :integer         not null, primary key
+#  doctor       :string(255)
+#  max_sessions :integer         default(0)
+#  billed       :boolean         default(FALSE)
+#  patient_id   :integer         not null
+#  created_at   :datetime
+#  updated_at   :datetime
+#  invoice_id   :integer
+#  rec_amount   :decimal(, )
+#  insurer_id   :integer         not null
+#
+
