@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_user_language
-  before_filter :require_user
+  #before_filter :require_user
   helper_method :current_user_session, :current_user
 
   protected

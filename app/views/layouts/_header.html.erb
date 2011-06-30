@@ -1,9 +1,6 @@
 <header>
   <nav class="round">
     <ul>
-      <% if !current_user %>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-      <% else %>
         <li><%= link_to "Home", root_path %></li>
 	<li><%= link_to t('.patients'), patients_path %></li>
 	<li><%= link_to t(".invoices"), invoices_path %></li>
@@ -11,9 +8,6 @@
 	<li><%= link_to t(".therapies"), therapies_path %></li>
 	<li><%= link_to "Insurers", insurers_path %></li>
 	<li><%= link_to "Pricelists", pricelists_path %></li>
-        <li><%= link_to "My Account", account_path %></li>
-	<li><%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
-      <% end %>
     </ul>
   </nav>
 </header>

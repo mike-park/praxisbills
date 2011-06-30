@@ -4,7 +4,7 @@ gem 'rails', '~> 3.0.0'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'routing-filter'
 gem 'delocalize'
-gem "authlogic"
+#gem "authlogic"
 gem 'tabletastic', '~> 0.2.0.pre6'
 gem 'haml-rails'
 gem 'jquery-rails'

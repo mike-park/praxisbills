@@ -1,15 +1,7 @@
 Praxisbills1::Application.routes.draw do
-  resources :pricelists
-
-  resources :insurers
-
   filter :locale
-
-  resource :account, :controller => "users"
-  resources :users
-  resource :user_session
-
-  root :to => "pages#home"
+  resources :pricelists
+  resources :insurers
 
   resources :patients do
     resources :auths
@@ -30,6 +22,8 @@ Praxisbills1::Application.routes.draw do
     match 'last_auth'
   end
   
+  root :to => "pages#home"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
