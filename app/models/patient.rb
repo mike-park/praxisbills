@@ -34,4 +34,8 @@ class Patient < ActiveRecord::Base
     first_name.strip! unless first_name.nil?
     last_name.strip!
   end
+
+  def current_insurer
+    auths.by_most_recent.first.try(:insurer)
+  end
 end
