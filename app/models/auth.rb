@@ -5,7 +5,8 @@ class Auth < ActiveRecord::Base
 
   has_many :bill_items, :order => "created_at", :dependent => :destroy
 
-  default_scope includes(:patient).order('patients.last_name')
+  #default_scope includes(:patient).order('patients.last_name')
+  scope :by_most_recent, order('auths.updated_at DESC')
 
   validates_presence_of :patient_id, :insurer_id
   
