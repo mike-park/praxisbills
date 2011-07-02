@@ -19,7 +19,7 @@ class BillItem < ActiveRecord::Base
 
   before_save :update_prices
 
-  validates_presence_of :auth_id, :therapy_id, :quantity
+  validates_presence_of :auth, :therapy, :quantity
 
   validates_numericality_of :quantity, 
                             :unless => "quantity.blank?"

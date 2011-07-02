@@ -24,7 +24,6 @@ Spork.prefork do
     # instead of true.
     config.use_transactional_fixtures = true
   end
-  ActiveSupport::Dependencies.clear
 end
 
 Spork.each_run do

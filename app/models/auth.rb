@@ -8,7 +8,7 @@ class Auth < ActiveRecord::Base
   #default_scope includes(:patient).order('patients.last_name')
   scope :by_most_recent, order('auths.updated_at DESC')
 
-  validates_presence_of :patient_id, :insurer_id
+  validates_presence_of :patient, :insurer
   
   validates_uniqueness_of :patient_id,
                           :scope => "invoice_id",

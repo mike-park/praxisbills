@@ -16,9 +16,9 @@
 
 class Therapy < ActiveRecord::Base
   has_many :bill_items
-  belongs_to :pricelist
+  belongs_to :pricelist, :inverse_of => :therapies
 
-  validates_presence_of :code, :short_description, :pricelist_id
+  validates_presence_of :code, :short_description, :pricelist
   validates_numericality_of :price
   validates_uniqueness_of :code, :scope => :pricelist_id
 

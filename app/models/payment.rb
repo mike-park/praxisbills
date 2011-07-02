@@ -16,7 +16,7 @@ class Payment < ActiveRecord::Base
   belongs_to :invoice
   has_many :auths, :through => :invoice
 
-  validates_presence_of :invoice_id, :rec_date, :amount
+  validates_presence_of :invoice, :rec_date, :amount
   validates_numericality_of :amount
 
   attr_accessible :invoice_id, :rec_date, :amount, :auths_attributes, :notes

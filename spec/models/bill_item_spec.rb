@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe BillItem do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { FactoryGirl.build(:bill_item) }
+
+  it { should be_valid }
+  [:auth, :therapy, :quantity].each do |item|
+    it "should not be valid without #{item}" do
+      subject.send("#{item}=", nil)
+      subject.should_not be_valid
+    end
+  end
 end
 
 # == Schema Information

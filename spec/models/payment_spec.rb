@@ -1,7 +1,15 @@
 require 'spec_helper'
 
 describe Payment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { FactoryGirl.build(:payment) }
+
+  it { should be_valid }
+  [:invoice, :rec_date, :amount].each do |item|
+    it "should not be valid without #{item}" do
+      subject.send("#{item}=", nil)
+      subject.should_not be_valid
+    end
+  end
 end
 
 # == Schema Information
