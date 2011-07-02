@@ -4,8 +4,6 @@ gem 'rake'
 gem 'rails', '~> 3.0.0'
 gem 'will_paginate', '~> 3.0.pre2'
 gem 'routing-filter'
-gem 'delocalize'
-#gem "authlogic"
 gem 'tabletastic', '~> 0.2.0.pre6'
 gem 'haml-rails'
 gem 'jquery-rails'
@@ -36,8 +34,17 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-   gem 'rspec-rails', '>= 2.0.0.beta.19'
-   gem 'annotate'
-   gem 'faker'
-   gem 'awesome_print'
+  gem 'rspec-rails'
+  # ensure we get latest syntax
+  gem 'factory_girl_rails', '>= 1.1.beta4', :require => false
+  gem 'spork'
+  gem "autotest-rails"
+  gem "autotest-fsevent"
+  gem "autotest-growl"
+
+  
+  gem 'annotate'
+  gem 'faker'
+  gem 'awesome_print'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
