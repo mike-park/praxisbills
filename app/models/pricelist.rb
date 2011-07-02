@@ -21,7 +21,7 @@ class Pricelist < ActiveRecord::Base
 
   def deep_clone
     pricelist = Pricelist.new(:start_date => Date.current,
-                              :note => "Duplicate of #{id}: #{start_date.to_s(:de)}")
+                              :note => "Duplicate of #{start_date.to_s(:de)}:#{note}")
     pricelist.therapies = therapies.collect do |therapy|
       clone = therapy.clone
       clone.pricelist_id = nil
