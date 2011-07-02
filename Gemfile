@@ -38,9 +38,10 @@ group :development, :test do
   # ensure we get latest syntax
   gem 'factory_girl_rails', '>= 1.1.beta4', :require => false
   gem 'spork', '~> 0.9.0.rc'
-  gem "autotest-rails"
-  gem "autotest-fsevent"
-  gem "autotest-growl"
+  gem "autotest", "~> 4.4.6"
+  gem "autotest-rails-pure", "~> 4.1.2"
+  gem "autotest-fsevent", "~> 0.2.4"
+  gem "autotest-growl", "~> 0.2.9"
 
   
   gem 'annotate'
