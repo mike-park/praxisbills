@@ -26,14 +26,17 @@ Spork.prefork do
 
     # when using capybara, transaction auto rollback after posts, so we
     # need to disable them. this should only be true with the selenium driver
-    # but i find it true with rack-test
-    config.use_transactional_fixtures = false
-    config.before :each do
-      DatabaseCleaner.strategy = :truncation
-      DatabaseCleaner.start
-    end
-    config.after do
-      DatabaseCleaner.clean
+    # but i find it true with rack-test when
+    # environments/test.rb => config.cache_classes = false
+    unless Rails.application.config.cache_classes
+      config.use_transactional_fixtures = false
+      config.before :each do
+        DatabaseCleaner.strategy = :truncation
+        DatabaseCleaner.start
+      end
+      config.after do
+        DatabaseCleaner.clean
+      end
     end
   end
 end
@@ -41,3 +44,8 @@ end
 Spork.each_run do
   require 'factory_girl_rails'
 end
+
+Spork.each_run do
+  ActiveSupport::Dependencies.clear
+  ActiveRecord::Base.instantiate_observers
+end if Spork.using_spork?
