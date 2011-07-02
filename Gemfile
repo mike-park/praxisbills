@@ -47,4 +47,8 @@ group :development, :test do
   gem 'faker'
   gem 'awesome_print'
   gem 'ruby-debug19', :require => 'ruby-debug'
+
+  gem "capybara"
+  gem "launchy"
+  gem 'database_cleaner'
 end

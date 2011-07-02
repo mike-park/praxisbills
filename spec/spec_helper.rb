@@ -23,6 +23,18 @@ Spork.prefork do
     # examples within a transaction, remove the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
+
+    # when using capybara, transaction auto rollback after posts, so we
+    # need to disable them. this should only be true with the selenium driver
+    # but i find it true with rack-test
+    config.use_transactional_fixtures = false
+    config.before :each do
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.start
+    end
+    config.after do
+      DatabaseCleaner.clean
+    end
   end
 end
 
