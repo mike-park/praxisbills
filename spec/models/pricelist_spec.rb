@@ -12,7 +12,7 @@ describe Pricelist do
     subject { p2 = p1.deep_clone; p2.save!; p2 }
     
     it { should be_kind_of(Pricelist) }
-    it { subject.start_date.should == Date.today }
+    it { subject.start_date.should == Date.current }
     it { subject.note.should =~ /Duplicate/ }
     it { subject.therapies.count.should == 2 }
     it { subject.therapies.count.should == p1.therapies.count }
