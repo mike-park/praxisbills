@@ -37,7 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   # ensure we get latest syntax
   gem 'factory_girl_rails', '>= 1.1.beta4', :require => false
-  gem 'spork'
+  gem 'spork', '~> 0.9.0.rc'
   gem "autotest-rails"
   gem "autotest-fsevent"
   gem "autotest-growl"
