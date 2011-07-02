@@ -1,6 +1,9 @@
 Praxisbills1::Application.routes.draw do
   filter :locale
-  resources :pricelists
+  resources :pricelists do
+    match ':id' => :clone, :via => :post, :on => :collection
+  end
+
   resources :insurers
 
   resources :patients do

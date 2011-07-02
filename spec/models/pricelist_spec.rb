@@ -1,7 +1,22 @@
 require 'spec_helper'
 
 describe Pricelist do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "#deep_clone" do
+    let(:p1) do
+      p1 = FactoryGirl.create(:pricelist)
+      p1.therapies << FactoryGirl.create(:therapy, :pricelist => p1)
+      p1.therapies << FactoryGirl.create(:therapy, :pricelist => p1)
+      p1
+    end
+    
+    subject { p2 = p1.deep_clone; p2.save!; p2 }
+    
+    it { should be_kind_of(Pricelist) }
+    it { subject.start_date.should == Date.today }
+    it { subject.note.should =~ /Duplicate/ }
+    it { subject.therapies.count.should == 2 }
+    it { subject.therapies.count.should == p1.therapies.count }
+  end
 end
 
 # == Schema Information

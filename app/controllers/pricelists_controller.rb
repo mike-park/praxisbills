@@ -53,6 +53,17 @@ class PricelistsController < ApplicationController
     end
   end
 
+  def clone
+    @pricelist = Pricelist.find(params[:id]).deep_clone
+    msg = if @pricelist.save
+            { :notice => 'Pricelist is cloned' }
+          else
+            { :alert => 'Pricelist could not be cloned' }
+          end
+    redirect_to(pricelists_url, msg)
+  end
+
+
   # PUT /pricelists/1
   # PUT /pricelists/1.xml
   def update
