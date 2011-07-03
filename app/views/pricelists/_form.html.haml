@@ -1,16 +1,5 @@
-= form_for @pricelist do |f|
-  -if @pricelist.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@pricelist.errors.count, "error")} prohibited this pricelist from being saved:"
-      %ul
-        - @pricelist.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :start_date
-    = f.date_select :start_date
-  .field
-    = f.label :note
-    = f.text_field :note
-  .actions
-    = f.submit 'Save'
+- @pricelist.start_date ||= Date.current
+= semantic_form_for @pricelist do |f|
+  = f.semantic_errors
+  = f.inputs
+  = f.buttons

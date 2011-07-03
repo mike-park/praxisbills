@@ -1,6 +1,26 @@
-%h1 Editing pricelist
+= semantic_form_for @pricelist do |f|
+  = f.semantic_errors
+  = f.inputs do
 
-= render 'form'
+    %h1 Pricelist
+    = f.input :start_date
+    = f.input :note
+
+    %h1 Therapies
+
+    %table
+      %tr
+        %th Code
+        %th Price
+        %th Label
+
+      = f.semantic_fields_for :therapies do |therapy|
+        %tr
+          %td= therapy.input :code, :label => false, :input_html => {:size => 5}
+          %td= therapy.input :price, :label => false, :input_html => {:size => 7}
+          %td= therapy.input :short_description, :label => false, :input_html => {:size => 40}
+
+  = f.buttons
 
 = link_to 'Show', @pricelist
 \|

@@ -15,6 +15,8 @@ class Pricelist < ActiveRecord::Base
   has_many :therapies, :dependent => :destroy, :inverse_of => :pricelist
   validates_presence_of :start_date
 
+  accepts_nested_attributes_for :therapies
+
   def name
     "#{start_date.to_s}: #{note}"
   end
