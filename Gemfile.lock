@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: http://rubygems.dev/
   specs:
     ZenTest (4.5.0)
     abstract (1.0.0)
