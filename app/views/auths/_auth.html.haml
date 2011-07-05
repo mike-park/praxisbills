@@ -1,0 +1,4 @@
+%tr
+  %td= link_to(auth.try(:invoice).sent_date.to_s(:de), auth.invoice)
+  %td= number_to_currency auth.total
+  %td= number_to_currency auth.rec_amount
