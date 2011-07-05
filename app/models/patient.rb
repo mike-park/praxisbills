@@ -12,7 +12,7 @@
 #
 
 class Patient < ActiveRecord::Base
-  has_many :auths, :dependent => :destroy
+  has_many :auths, :dependent => :destroy, :order => 'created_at desc'
 
   validates_presence_of :last_name
   
