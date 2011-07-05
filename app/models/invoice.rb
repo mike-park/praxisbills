@@ -26,11 +26,11 @@ class Invoice < ActiveRecord::Base
 
   # summary information, derived from sub tables
   def billed_amount
-    auths.map(&:total).sum || 0
+    auths.map(&:total).compact.sum || 0
   end
 
   def received_amount
-    payments.map(&:amount).sum || 0
+    auths.map(&:rec_amount).compact.sum || 0
   end
 
   def owed_to_us
