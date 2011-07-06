@@ -10,3 +10,4 @@
 .stdTable th{color: #000; font-weight:bold}
 .stdTable img{display:inline-block; vertical-align: middle; padding:0 5px;}
 .stdTable .totals{font-size: 120%; border-top: 2px solid $background;}
+.stdTable th:last-child, .stdTable td:last-child{white-space:nowrap;}
