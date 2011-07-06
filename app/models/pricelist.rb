@@ -25,7 +25,8 @@ class Pricelist < ActiveRecord::Base
     pricelist = Pricelist.new(:start_date => Date.current,
                               :note => "Duplicate of #{start_date.to_s(:de)}:#{note}")
     pricelist.therapies = therapies.collect do |therapy|
-      clone = therapy.clone
+      # rails 3.1 use dup rather than clone to get a new object that can be saved
+      clone = therapy.dup
       clone.pricelist_id = nil
       clone
     end
