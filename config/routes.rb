@@ -1,5 +1,5 @@
-Praxisbills1::Application.routes.draw do
-  filter :locale
+Praxisbills::Application.routes.draw do
+
   resources :pricelists do
     match ':id' => :clone, :via => :post, :on => :collection
   end
@@ -25,7 +25,7 @@ Praxisbills1::Application.routes.draw do
     match 'last_auth'
   end
   
-  root :to => "pages#home"
+  root :to => "invoices#index"
 
 
   # The priority is based upon order of creation:
