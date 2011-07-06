@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %title Praxis Bills
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+
+  %body.page
+    .head
+      = render 'layouts/header'
+    .body
+      -# .leftCol &/or .rightCol here
+      .main
+        = render 'layouts/flash' if flash.any?
+        = yield
+    .foot
+      = debug(params) if Rails.env.development?
