@@ -1,0 +1,15 @@
+%table
+  %thead
+    %tr
+      %th Start date
+      %th Note
+      %th
+
+  %tbody
+    - pricelists.each do |pricelist|
+      %tr
+        %td= pricelist.start_date
+        %td= pricelist.note
+        %td
+          = link_actions_for(pricelist)
+          = link_to 'Duplicate', pricelist, :method => :post

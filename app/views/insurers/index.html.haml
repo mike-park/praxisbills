@@ -1,23 +1,6 @@
-%h1 Listing insurers
+%h2 Insurers
 
-%table
-  %tr
-    %th Abbr
-    %th Name
-    %th Active pricelist
-    %th
-    %th
-    %th
-
-  - @insurers.each do |insurer|
-    %tr
-      %td= insurer.abbr
-      %td= insurer.name
-      %td= link_to(insurer.active_pricelist.start_date, insurer.active_pricelist)
-      %td= link_to 'Show', insurer
-      %td= link_to 'Edit', edit_insurer_path(insurer)
-      %td= link_to 'Destroy', insurer, :confirm => 'Are you sure?', :method => :delete
-
-%br
+.data.stdTable
+  = render 'insurers', insurers:@insurers
 
 = link_to 'New Insurer', new_insurer_path

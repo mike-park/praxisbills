@@ -1,0 +1,16 @@
+%table
+  %caption.h3= caption if local_assigns.has_key? :caption
+  %thead
+    %tr
+      %th Abbr
+      %th Name
+      %th Pricelist
+      %th
+
+  %tbody
+    - insurers.each do |insurer|
+      %tr
+        %td= insurer.abbr
+        %td= insurer.name
+        %td= link_to(insurer.active_pricelist.start_date, insurer.active_pricelist)
+        %td= link_actions_for(insurer)

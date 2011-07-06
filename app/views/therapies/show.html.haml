@@ -1,0 +1,11 @@
+%h2 Therapy
+
+= semantic_attributes_for(@therapy) do |attr|
+  = attr.attributes do
+    = attr.attribute :code
+    = attr.attribute :price, :format => :number_to_currency
+    = attr.attribute :short_description
+    = attr.attribute :description
+
+= link_to 'Edit', edit_therapy_path(@therapy)
+= link_to 'Back', :back

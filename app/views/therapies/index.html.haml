@@ -1,0 +1,8 @@
+%h2 Therapies
+
+.data.stdTable
+  = render 'therapies', therapies:@therapies
+
+= will_paginate @therapies, :class => 'digg_pagination'
+
+= link_to 'New Therapy', new_therapy_path
