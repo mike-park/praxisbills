@@ -1,0 +1,29 @@
+/* menu */
+.menu {
+   padding: 15px 0 0 0;
+   li {
+      display: inline-block;
+   }
+   li.selected {
+	  background: #120019;
+      a {
+	     background: #120019;
+	     color: #FFFFFF;
+      }
+   }
+   a { 
+	  float: left;
+	  height: 24px;
+	  padding: 4px 30px 0px 30px;
+	  text-decoration: none;
+	  text-transform: lowercase;
+	  font-family: Arial, Helvetica, sans-serif;
+	  font-size: 16px;
+	  font-weight: normal;
+	  color: #FFFFFF;
+	  border: none;
+      &:hover {
+         text-decoration: none;
+      }
+   }
+}

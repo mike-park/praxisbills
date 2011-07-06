@@ -1,0 +1,12 @@
+/* imported last, to allow media query overrides */
+
+@import 'constants';
+
+body {
+   background: $background;
+}
+
+.body {
+   background: $foreground;
+   padding-left: 5px;
+}
