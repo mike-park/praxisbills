@@ -1,0 +1,16 @@
+%h2 Patients
+
+.data.stdTable
+  %table
+    %thead
+      %tr
+        %th First Name
+        %th Last Name
+        %th Dob
+        %th
+    %tbody
+      = render @patients
+
+= will_paginate @patients, :class => 'digg_pagination'
+
+= link_to 'New Patient', new_patient_path

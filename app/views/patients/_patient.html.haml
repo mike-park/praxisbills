@@ -1,0 +1,8 @@
+%tr
+  %td= patient.first_name
+  %td= patient.last_name
+  %td= patient.dob
+  %td
+    = link_to_show patient
+    = link_to_edit edit_patient_path(patient)
+    = link_to_destroy patient
