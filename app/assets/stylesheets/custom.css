@@ -1,11 +1,3 @@
-.container {
-    width: 710px;
-}
-
-body {
-    background: #cff;
-}
-
 header {
     padding-top: 20px;
 }
@@ -15,10 +7,6 @@ section {
     font-size: 120%;
     padding: 20px;
     background: #fff;
-}
-
-nav {
-    float: right;
 }
 
 nav {
@@ -49,18 +37,6 @@ nav ul li a:visited {
 
 nav ul li a:hover {
     text-decoration: underline;
-}
-
-footer {
-    text-align: center;
-    margin-top: 10px;
-    width: 710px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-footer nav {
-    float: none;
 }
 
 a {
