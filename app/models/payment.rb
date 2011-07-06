@@ -27,4 +27,7 @@ class Payment < ActiveRecord::Base
     payments.map(&:amount).sum
   end
 
+  def billed_date
+    invoice.sent_date
+  end
 end

@@ -1,0 +1,7 @@
+%h2 Payments
+
+- if @payments.any?
+  .data.stdTable
+    = render 'payments', payments:@payments
+
+= link_to 'New Payment', new_payment_path

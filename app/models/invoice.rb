@@ -14,39 +14,28 @@ class Invoice < ActiveRecord::Base
   has_many :auths, :dependent => :destroy
   has_many :payments, :order => "rec_date", :dependent => :destroy
 
-  scope :paid, where(:open => false).order('sent_date desc')
-  scope :unpaid, where(:open => true).order('sent_date desc')
+  scope :paid, where(:open => false)
+  scope :unpaid, where(:open => true)
+  scope :by_most_recent, order('sent_date desc')
 
   validates_presence_of :sent_date
   attr_accessible :sent_date, :open
 
-  def select_name
-    sent_date
+  delegate :billed_amount, :received_amount, :owed_to_us, :to => :auths
+
+  def self.billed_amount
+    scoped.joins(:auths => [:bill_items]).sum('bill_items.total') || 0
   end
 
-  # summary information, derived from sub tables
-  def billed_amount
-    auths.map(&:total).compact.sum || 0
+  def self.received_amount
+    scoped.joins(:auths).sum('auths.rec_amount') || 0
   end
 
-  def received_amount
-    auths.map(&:rec_amount).compact.sum || 0
-  end
-
-  def owed_to_us
+  def self.owed_to_us
     billed_amount - received_amount
   end
 
-  # class versions, working with a collection of invoices
-  def self.billed_amount(invoices)
-    invoices.map(&:billed_amount).sum
-  end
-
-  def self.received_amount(invoices)
-    invoices.map(&:received_amount).sum
-  end
-
-  def self.owed_to_us(invoices)
-    self.billed_amount(invoices) - self.received_amount(invoices)
+  def select_name
+    sent_date
   end
 end

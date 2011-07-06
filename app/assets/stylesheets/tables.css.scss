@@ -6,6 +6,7 @@
 .stdTable{padding:0 20px 20px 20px;}
 .stdTable table{width:auto; table-layout:auto;border:1px solid $background;}
 .stdTable th, .stdTable td{border:1px solid $background;}
-.stdTable thead tr{background-color: lighten($background, 50%);}
+.stdTable thead tr{background-color: $header-background;}
 .stdTable th{color: #000; font-weight:bold}
-.stdTable img{display:inline-block; vertical-align: middle;}
+.stdTable img{display:inline-block; vertical-align: middle; padding:0 5px;}
+.stdTable .totals{font-size: 120%; border-top: 2px solid $background;}

@@ -32,6 +32,18 @@ class BillItem < ActiveRecord::Base
 
   attr_accessible :auth_id, :therapy_id, :quantity, :unit_price
 
+  def self.billed_amount
+    scoped.sum(:total) || 0
+  end
+
+  def self.maximum_quantity
+    scoped.maximum(:quantity) || 0
+  end
+
+  def billed_amount
+    total
+  end
+
   private
     def update_prices
       self.unit_price ||= therapy.price

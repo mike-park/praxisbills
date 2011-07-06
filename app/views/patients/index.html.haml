@@ -1,15 +1,7 @@
 %h2 Patients
 
 .data.stdTable
-  %table
-    %thead
-      %tr
-        %th First Name
-        %th Last Name
-        %th Dob
-        %th
-    %tbody
-      = render @patients
+  = render 'patients', :patients => @patients
 
 = will_paginate @patients, :class => 'digg_pagination'
 

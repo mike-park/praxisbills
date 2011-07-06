@@ -8,6 +8,7 @@
  *= require formtastic_changes
  *= require menu
  *= require tables
+ *= require attributes
  *= require praxis
  *# require_tree . 
 */

@@ -23,6 +23,9 @@ gem "coffee-filter", :git => "git://github.com/paulnicholson/coffee-filter.git"
 gem 'formtastic'
 gem "formtastic_datepicker_inputs"
 
+# attribute display helper
+gem "attrtastic"
+
 # auto-completion
 gem 'rails3-jquery-autocomplete'
 

@@ -24,6 +24,13 @@ module ApplicationHelper
     :confirm => 'Are you sure?', :method => :delete
   end
 
+  # generate std show, edit, destroy links for object
+  def link_actions_for(object)
+    link_to_show(object) +
+      link_to_edit(edit_polymorphic_path(object)) +
+      link_to_destroy(object)
+  end
+
   def number_to_euro(amount)
     number_to_currency(amount) unless amount.blank?
   end

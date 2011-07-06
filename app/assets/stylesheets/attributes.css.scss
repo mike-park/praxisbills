@@ -1,0 +1,22 @@
+/* attrtastic attribute styling */
+
+@import "constants";
+
+/* attrtastic is a .mod (as per oocss) with .inner being .attributes */
+.attrtastic {
+   margin:20px;
+   &:before, &:after{content:"";display:table;}
+   &:after{clear:both;}
+   .attributes{
+      position:relative;
+      display: inline-block;
+      border: 1px solid black;
+      .legend{padding-left: 10px;background:$header-background;font-weight:bold;}
+      li{margin-bottom: 3px;}
+      .label{
+         display: inline-block;
+         width: 150px;
+         font-weight: bold;
+      }
+   }
+}

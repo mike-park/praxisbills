@@ -5,7 +5,7 @@ class Auth < ActiveRecord::Base
 
   has_many :bill_items, :order => "created_at", :dependent => :destroy
 
-  #default_scope includes(:patient).order('patients.last_name')
+  scope :by_name, includes(:patient).order('patients.last_name')
   scope :by_most_recent, order('auths.updated_at DESC')
 
   validates_presence_of :patient, :insurer
@@ -19,43 +19,44 @@ class Auth < ActiveRecord::Base
   attr_accessible :doctor, :max_sessions, :billed,
   :patient_id, :invoice_id, :rec_amount, :insurer_id
 
-  # summary information from sub tables
-  def total
-    bill_items.sum(:total) || 0
+  delegate :billed_amount, :maximum_quantity, :to => :bill_items
+
+
+  def self.billed_amount
+    scoped.joins(:bill_items).sum('bill_items.total') || 0
   end
 
-  def maximum_quantity
-    bill_items.maximum(:quantity) || 0
-  end
-
-  def diff
-    (rec_amount || 0) - total
+  def self.received_amount
+    scoped.sum(:rec_amount) || 0
   end
   
-  # summary information over a collection of auths
-  def self.total(auths)
-    auths.map(&:total).sum
+  def self.quantity
+    scoped.map {|auth| auth.bill_items.maximum_quantity}.sum
   end
 
-  def self.quantity(auths)
-    auths.map(&:maximum_quantity).sum
+  def self.max_sessions
+    scoped.sum(:max_sessions) || 0
   end
 
-  def self.max_sessions(auths)
-    auths.sum(:max_sessions)
-  end
-
-  def self.rec_amount(auths)
-    auths.sum(:rec_amount)
-  end
-  
-  def self.diff(auths)
-    auths.sum(:rec_amount) - self.total(auths)
+  def self.owed_to_us
+    billed_amount - received_amount
   end
   
   # order auths by patient name alphabetically
   def <=>(other)
     patient.select_name.casecmp(other.patient.select_name)
+  end
+
+  def invoice_date
+    invoice.try(:sent_date)
+  end
+
+  def received_amount
+    rec_amount || 0
+  end
+  
+  def owed_to_us
+    received_amount - billed_amount
   end
 end
 

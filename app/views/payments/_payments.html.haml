@@ -1,0 +1,20 @@
+%table
+  %caption.h3= caption if local_assigns.has_key? :caption
+  %thead
+    %tr
+      %th Received
+      %th.txtR Amount
+      %th
+
+  %tbody
+    - payments.each do |payment|
+      %tr
+        %td= "#{l payment.rec_date}, #{distance_of_time_in_words(payment.invoice.sent_date, payment.rec_date)} after invoice"
+        %td.txtR= number_to_currency payment.amount
+        %td= link_actions_for(payment)
+
+
+    %tr.totals
+      %td= pluralize(payments.count, 'payment')
+      %td= number_to_currency Payment.amount(payments)
+      %td

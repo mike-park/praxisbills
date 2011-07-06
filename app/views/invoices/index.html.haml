@@ -1,0 +1,11 @@
+%h2 Invoices
+
+- if @unpaid_invoices.any?
+  .data.stdTable
+    = render 'invoices', :invoices => @unpaid_invoices, :caption => 'Unpaid'
+
+- if @paid_invoices.any?
+  .data.stdTable
+    = render 'invoices', :invoices => @paid_invoices, :caption => 'Paid'
+
+= link_to 'New Invoice', new_invoice_path

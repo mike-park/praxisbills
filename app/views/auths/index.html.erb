@@ -1,9 +1,0 @@
-<h1>Listing Patient Authorizations</h1>
-
-<% if !@auths.empty? %>
-  <%= render :partial => 'list_auths',
-        :locals => { :caption => 'Auths',
-                     :auths => @auths } %>
-<% end %>
-		     
-<%= link_to 'New Patient Authorization', new_auth_path %>

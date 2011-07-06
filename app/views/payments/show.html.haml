@@ -1,0 +1,15 @@
+%h2 Payment
+
+= semantic_attributes_for(@payment) do |attr|
+  = attr.attributes "Payment" do
+    = attr.attribute :rec_date, :label => 'Received'
+    = attr.attribute :billed_date, :label => 'Invoiced'
+    = attr.attribute :amount, :format => :number_to_currency
+    = attr.attribute :notes
+
+
+.data.stdTable
+  = render 'auths/auths', :auths => @payment.auths.by_name
+
+= link_to 'Edit', edit_payment_path(@payment)
+= link_to 'Back', payments_path

@@ -1,0 +1,7 @@
+%h2 Authorizations
+
+- if @auths.any?
+  .data.stdTable
+    = render 'auths', auths:@auths
+
+= link_to 'New Patient Authorization', new_auth_path

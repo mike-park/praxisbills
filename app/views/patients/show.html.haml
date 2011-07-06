@@ -1,0 +1,16 @@
+%h2 Patient
+
+= semantic_attributes_for(@patient) do |attr|
+  = attr.attributes do
+    = attr.attribute :last_name
+    = attr.attribute :first_name
+    = attr.attribute :dob
+    = attr.attribute :current_insurer do
+      = link_to("#{@patient.current_insurer.name}", @patient.current_insurer)
+
+.data.stdTable
+  = render 'auths/auths', auths:@patient.auths.by_most_recent, with_date:true, caption:'Authorizations'
+
+= link_to 'Add Auth', new_patient_auth_path(@patient)
+= link_to 'Edit', edit_patient_path(@patient) 
+= link_to 'Back', patients_path
