@@ -1,8 +1,0 @@
-<h1>Listing users</h1>
-
-<%= table_for(@users) do |t|
-  t.data :email, :login_count, :failed_login_count, 
-         :last_request_at, :current_login_at, :current_login_ip
-end -%>
-       
-<%= link_to 'New User', new_user_path %>
