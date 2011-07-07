@@ -9,14 +9,3 @@
     = f.input :doctor
     = f.input :billed
   = f.buttons
-
-:javascript
-  function patientChanged(elem) {
-  $.ajax({ data: { id: $("#auth_patient_id").val() },
-  dataType: "json",
-  success: function (data, textStatus, req) {
-  $("#auth_insurer_id").val(data.auth.insurer_id);
-  },
-  url: "#{api_last_auth_url}"
-  });
-  }
