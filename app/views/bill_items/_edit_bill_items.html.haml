@@ -1,0 +1,32 @@
+= semantic_form_for([@auth, @bill_item]) do |f|
+  = f.semantic_errors
+  = f.inputs do
+    .data.stdTable
+      %table
+        %caption.h3 Therapies
+        %thead
+          %tr
+            %th
+              Therapy (Insurer
+              = link_to(@auth.insurer.abbr, @auth.insurer) + ")"
+            %th.txtR Quantity
+            %th.txtR Price
+            %th.txtR Total
+            %th
+
+        %tbody
+          - bill_items.each do |bill_item|
+            - if bill_item == @bill_item
+              = render 'bill_items/form', f:f
+            - else
+              %tr
+                %td= link_to bill_item.therapy.select_name, therapy_path(bill_item.therapy), :title => bill_item.therapy.description
+                %td.txtR= bill_item.quantity
+                %td.txtR= number_to_currency bill_item.unit_price
+                %td.txtR= number_to_currency bill_item.total
+                %td
+                  = link_to_edit edit_auth_bill_item_path(@auth, bill_item)
+                  = link_to_destroy auth_bill_item_path(@auth, bill_item)
+          - if @bill_item.new_record?
+            = render 'bill_items/form', f:f
+    

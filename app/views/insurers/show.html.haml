@@ -1,15 +1,11 @@
-%p#notice= notice
+%h2 Insurer
 
-%p
-  %b Abbr:
-  = @insurer.abbr
-%p
-  %b Name:
-  = @insurer.name
-%p
-  %b Active pricelist:
-  = link_to(@insurer.active_pricelist.start_date, @insurer.active_pricelist)
+= semantic_attributes_for(@insurer) do |attr|
+  = attr.attributes do
+    = attr.attribute :abbr
+    = attr.attribute :name
+    = attr.attribute :active_pricelist do
+      = link_to(@insurer.active_pricelist.start_date, @insurer.active_pricelist)
 
 = link_to 'Edit', edit_insurer_path(@insurer)
-\|
 = link_to 'Back', insurers_path

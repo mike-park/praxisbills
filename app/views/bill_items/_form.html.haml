@@ -1,0 +1,12 @@
+%tr
+  %td= f.collection_select :therapy_id, @auth.insurer.active_pricelist.therapies.order("code").all, :id, :select_name, { :prompt => 'Therapy type' }, :autofocus => true
+  %td= f.text_field :quantity, :size => 4
+  %td= f.text_field :unit_price, :size => 4
+  - if f.object.new_record?
+    %td{colspan:"2"}
+      = f.submit 'Add Therapy'
+  - else
+    %td{colspan:"2"}
+      = f.submit 'Update Therapy'
+      = link_to_destroy auth_bill_item_path(@auth, f.object)
+ 
