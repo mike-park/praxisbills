@@ -24,11 +24,11 @@ class Invoice < ActiveRecord::Base
   delegate :billed_amount, :received_amount, :owed_to_us, :to => :auths
 
   def self.billed_amount
-    scoped.joins(:auths => [:bill_items]).sum('bill_items.total') || 0
+    scoped.joins(:auths => [:bill_items]).sum('bill_items.total').to_f
   end
 
   def self.received_amount
-    scoped.joins(:auths).sum('auths.rec_amount') || 0
+    scoped.joins(:auths).sum('auths.rec_amount').to_f
   end
 
   def self.owed_to_us

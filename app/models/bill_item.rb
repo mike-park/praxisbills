@@ -33,15 +33,15 @@ class BillItem < ActiveRecord::Base
   attr_accessible :auth_id, :therapy_id, :quantity, :unit_price
 
   def self.billed_amount
-    scoped.sum(:total) || 0
+    scoped.sum(:total).to_f
   end
 
   def self.maximum_quantity
-    scoped.maximum(:quantity) || 0
+    scoped.maximum(:quantity).to_i
   end
 
   def billed_amount
-    total
+    total || 0.0
   end
 
   private

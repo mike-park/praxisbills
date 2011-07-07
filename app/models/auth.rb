@@ -17,17 +17,18 @@ class Auth < ActiveRecord::Base
   validates_numericality_of :rec_amount, :unless => "rec_amount.blank?"
 
   attr_accessible :doctor, :max_sessions, :billed,
-  :patient_id, :invoice_id, :rec_amount, :insurer_id
+  :patient_id, :invoice_id, :rec_amount, :insurer_id, :bill_items_attributes
 
   delegate :billed_amount, :maximum_quantity, :to => :bill_items
 
+  accepts_nested_attributes_for :bill_items
 
   def self.billed_amount
-    scoped.joins(:bill_items).sum('bill_items.total') || 0
+    scoped.joins(:bill_items).sum('bill_items.total').to_f
   end
 
   def self.received_amount
-    scoped.sum(:rec_amount) || 0
+    scoped.sum(:rec_amount).to_f
   end
   
   def self.quantity
@@ -35,7 +36,7 @@ class Auth < ActiveRecord::Base
   end
 
   def self.max_sessions
-    scoped.sum(:max_sessions) || 0
+    scoped.sum(:max_sessions).to_i
   end
 
   def self.owed_to_us
@@ -52,7 +53,7 @@ class Auth < ActiveRecord::Base
   end
 
   def received_amount
-    rec_amount || 0
+    rec_amount || 0.0
   end
   
   def owed_to_us
