@@ -1,0 +1,6 @@
+= semantic_form_for @invoice do |f|
+  = f.semantic_errors
+  = f.inputs do
+    = f.input :sent_date, :as => :date_picker, :format => '%d.%m.%Y'
+    = f.input :open, :label => 'Unpaid?'
+  = f.buttons

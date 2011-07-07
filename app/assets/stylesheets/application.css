@@ -4,6 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require oocss/all
+ *= require smoothness/jquery-ui-1.8.14.custom
  *= require formtastic
  *= require formtastic_changes
  *= require menu
