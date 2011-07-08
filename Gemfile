@@ -35,6 +35,9 @@ gem 'sqlite3'
 # pagination
 gem 'will_paginate', :git => "git://github.com/xspond/will_paginate.git", :branch => "rails3-1"
 
+# navigation help
+gem "simple-navigation"
+
 group :development, :test do
   gem 'rspec-rails', '> 2.4.1'
   
