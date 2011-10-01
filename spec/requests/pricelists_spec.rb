@@ -15,7 +15,7 @@ describe "Pricelists" do
       FactoryGirl.create(:pricelist, :note => 'IKK pricelist')
       visit pricelists_path
       page.should have_content("IKK pricelist")
-      save_and_open_page
+      #save_and_open_page
       click_link "Duplicate"
       page.should have_content("Duplicate of")
     end

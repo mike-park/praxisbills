@@ -1,163 +1,102 @@
 GIT
-  remote: git://github.com/lautis/uglifier.git
-  revision: 3763a3ec84f425f2759bfd1beb2a12ef2cf3de45
+  remote: git://github.com/adyard/formtastic_datepicker_inputs.git
+  revision: 644fb59c48fd03c777deefce2472a73359319cd4
   specs:
-    uglifier (1.0.0)
-      execjs (>= 0.3.0)
-      multi_json (>= 1.0.2)
+    formtastic_datepicker_inputs (1.0.0)
+      actionpack (>= 3.1.0.rc4)
+      activesupport (>= 3.1.0.rc4)
+      formtastic (>= 2.0.0.rc3)
+      i18n (>= 0.4.0)
 
-GIT
-  remote: git://github.com/nex3/haml.git
-  revision: ffb73065aa2843b73b4a85766085cc93b9c8fd85
+GEM
+  remote: http://rubygems.org/
   specs:
-    haml (3.2.0.alpha.0)
-
-GIT
-  remote: git://github.com/paulnicholson/coffee-filter.git
-  revision: 5cd0dec1be7ce8faf07ccaca6a9701355a4db6e1
-  specs:
-    coffee-filter (0.1.1)
-      coffee-script (>= 2.2.0)
-      haml (>= 3.0.18)
-
-GIT
-  remote: git://github.com/rails/jquery-rails.git
-  revision: 933e59d452e146913938a50061f4bb71a93e9ca4
-  specs:
-    jquery-rails (1.0.12)
-      railties (~> 3.0)
-      thor (~> 0.14)
-
-GIT
-  remote: git://github.com/rails/rails.git
-  revision: 07ea84a03b2a2c753768965a840913b4d4d42cee
-  branch: 3-1-stable
-  specs:
-    actionmailer (3.1.0.rc4)
-      actionpack (= 3.1.0.rc4)
+    ZenTest (4.6.2)
+    actionmailer (3.1.1.rc2)
+      actionpack (= 3.1.1.rc2)
       mail (~> 2.3.0)
-    actionpack (3.1.0.rc4)
-      activemodel (= 3.1.0.rc4)
-      activesupport (= 3.1.0.rc4)
+    actionpack (3.1.1.rc2)
+      activemodel (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       i18n (~> 0.6)
-      rack (~> 1.3.0)
-      rack-cache (~> 1.0.2)
-      rack-mount (~> 0.8.1)
-      rack-test (~> 0.6.0)
-      sprockets (= 2.0.0.beta.10)
-      tzinfo (~> 0.3.29)
-    activemodel (3.1.0.rc4)
-      activesupport (= 3.1.0.rc4)
-      bcrypt-ruby (~> 2.1.4)
+      rack (~> 1.3.2)
+      rack-cache (~> 1.0.3)
+      rack-mount (~> 0.8.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.0.0)
+    activemodel (3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
       builder (~> 3.0.0)
       i18n (~> 0.6)
-    activerecord (3.1.0.rc4)
-      activemodel (= 3.1.0.rc4)
-      activesupport (= 3.1.0.rc4)
-      arel (~> 2.1.3)
+    activerecord (3.1.1.rc2)
+      activemodel (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
+      arel (~> 2.2.1)
       tzinfo (~> 0.3.29)
-    activeresource (3.1.0.rc4)
-      activemodel (= 3.1.0.rc4)
-      activesupport (= 3.1.0.rc4)
-    activesupport (3.1.0.rc4)
+    activeresource (3.1.1.rc2)
+      activemodel (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
+    activesupport (3.1.1.rc2)
       multi_json (~> 1.0)
-    rails (3.1.0.rc4)
-      actionmailer (= 3.1.0.rc4)
-      actionpack (= 3.1.0.rc4)
-      activerecord (= 3.1.0.rc4)
-      activeresource (= 3.1.0.rc4)
-      activesupport (= 3.1.0.rc4)
-      bundler (~> 1.0)
-      railties (= 3.1.0.rc4)
-    railties (3.1.0.rc4)
-      actionpack (= 3.1.0.rc4)
-      activesupport (= 3.1.0.rc4)
-      rack-ssl (~> 1.3.2)
-      rake (>= 0.8.7)
-      rdoc (~> 3.4)
-      thor (~> 0.14.6)
-
-GIT
-  remote: git://github.com/rtomayko/tilt.git
-  revision: a07077f4737754757e99c2d42267f432289ffd13
-  specs:
-    tilt (1.3.2)
-
-GIT
-  remote: git://github.com/xspond/will_paginate.git
-  revision: 7dfc31d01982a801b1c96211ad4b0d83b1dd0804
-  branch: rails3-1
-  specs:
-    will_paginate (3.0.pre3)
-
-GEM
-  remote: http://rubygems.dev/
-  specs:
-    ZenTest (4.5.0)
+    addressable (2.2.6)
     annotate (2.4.0)
-    archive-tar-minitar (0.5.2)
-    arel (2.1.3)
-    attrtastic (0.4.0)
+    arel (2.2.1)
+    attrtastic (0.4.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-fsevent (0.2.5)
       sys-uname
-    autotest-growl (0.2.9)
+    autotest-growl (0.2.11)
     autotest-rails-pure (4.1.2)
     awesome_print (0.4.0)
-    bcrypt-ruby (2.1.4)
     builder (3.0.0)
-    capybara (1.0.0)
+    capybara (1.1.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      selenium-webdriver (~> 0.2.0)
+      selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    childprocess (0.1.9)
+    childprocess (0.2.2)
       ffi (~> 1.0.6)
+    coffee-rails (3.1.1)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.1.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.1.1)
-    columnize (0.3.3)
-    configuration (1.3.1)
+    coffee-script-source (1.1.2)
     database_cleaner (0.6.7)
-    diff-lcs (1.1.2)
+    diff-lcs (1.1.3)
     erubis (2.7.0)
-    execjs (1.2.0)
+    execjs (1.2.9)
       multi_json (~> 1.0)
-    factory_girl (2.0.0.rc1)
-    factory_girl_rails (1.1.rc1)
-      factory_girl (~> 2.0.0.rc)
+    factory_girl (2.1.2)
+      activesupport
+    factory_girl_rails (1.2.0)
+      factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
-    formtastic (1.2.4)
-      actionpack (>= 2.3.7)
-      activesupport (>= 2.3.7)
-      i18n (~> 0.4)
-    formtastic_datepicker_inputs (1.0.0)
-      actionpack (>= 2.3.7)
-      activesupport (>= 2.3.7)
-      formtastic
-      i18n (>= 0.4.0)
+    formtastic (2.0.0)
+      rails (~> 3.0)
+    haml (3.1.3)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    hike (1.1.0)
+    hike (1.2.1)
     i18n (0.6.0)
-    json_pure (1.5.3)
-    launchy (0.4.0)
-      configuration (>= 0.0.5)
-      rake (>= 0.8.1)
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
+    jquery-rails (1.0.14)
+      railties (~> 3.0)
+      thor (~> 0.14)
+    json_pure (1.6.1)
+    launchy (2.0.5)
+      addressable (~> 2.2.6)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -165,21 +104,35 @@ GEM
     mime-types (1.16)
     multi_json (1.0.3)
     nokogiri (1.5.0)
-    polyglot (0.3.1)
-    rack (1.3.0)
-    rack-cache (1.0.2)
+    polyglot (0.3.2)
+    rack (1.3.3)
+    rack-cache (1.0.3)
       rack (>= 0.4)
-    rack-mount (0.8.1)
+    rack-mount (0.8.3)
       rack (>= 1.0.0)
     rack-ssl (1.3.2)
       rack
-    rack-test (0.6.0)
+    rack-test (0.6.1)
       rack (>= 1.0)
-    rails3-jquery-autocomplete (0.8.0)
+    rails (3.1.1.rc2)
+      actionmailer (= 3.1.1.rc2)
+      actionpack (= 3.1.1.rc2)
+      activerecord (= 3.1.1.rc2)
+      activeresource (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
+      bundler (~> 1.0)
+      railties (= 3.1.1.rc2)
+    rails3-jquery-autocomplete (1.0.4)
       rails (~> 3.0)
-      yajl-ruby
+    railties (3.1.1.rc2)
+      actionpack (= 3.1.1.rc2)
+      activesupport (= 3.1.1.rc2)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (~> 0.14.6)
     rake (0.9.2)
-    rdoc (3.8)
+    rdoc (3.9.4)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -193,44 +146,40 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
-    sass (3.1.4)
-    sass-rails (3.1.0.rc.4)
-      actionpack (~> 3.1.0.rc1)
-      railties (~> 3.1.0.rc1)
+    sass (3.1.8)
+    sass-rails (3.1.3)
+      actionpack (~> 3.1.0)
+      railties (~> 3.1.0)
       sass (>= 3.1.4)
-      sprockets (>= 2.0.0.beta.9)
-    selenium-webdriver (0.2.2)
-      childprocess (>= 0.1.9)
+      sprockets (~> 2.0.0)
+      tilt (~> 1.3.2)
+    selenium-webdriver (2.7.0)
+      childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
       json_pure
       rubyzip
-    simple-navigation (3.3.3)
+    simple-navigation (3.5.0)
       activesupport (>= 2.3.2)
     spork (0.9.0.rc9)
-    sprockets (2.0.0.beta.10)
-      hike (~> 1.0)
+    sprockets (2.0.1)
+      hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.3)
-    sys-uname (0.8.5)
+    sqlite3 (1.3.4)
+    sys-uname (0.8.6)
     thor (0.14.6)
-    treetop (1.4.9)
+    tilt (1.3.3)
+    treetop (1.4.10)
+      polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.29)
+    tzinfo (0.3.30)
+    uglifier (1.0.3)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
+    will_paginate (3.0.2)
     xpath (0.1.4)
       nokogiri (~> 1.3)
-    yajl-ruby (0.8.2)
 
 PLATFORMS
   ruby
@@ -244,26 +193,21 @@ DEPENDENCIES
   autotest-rails-pure (~> 4.1.2)
   awesome_print
   capybara
-  coffee-filter!
-  coffee-script
+  coffee-rails (~> 3.1.0)
   database_cleaner
   factory_girl_rails (>= 1.1.beta4)
   formtastic
-  formtastic_datepicker_inputs
-  haml!
+  formtastic_datepicker_inputs!
   haml-rails
-  jquery-rails!
+  jquery-rails
   launchy
-  rails!
+  rails (= 3.1.1.rc2)
   rails3-jquery-autocomplete
   rake
   rspec-rails (> 2.4.1)
-  ruby-debug19
-  sass
-  sass-rails
+  sass-rails (~> 3.1.0)
   simple-navigation
   spork (~> 0.9.0.rc2)
   sqlite3
-  tilt!
-  uglifier!
-  will_paginate!
+  uglifier
+  will_paginate

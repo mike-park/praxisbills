@@ -6,7 +6,7 @@ describe PricelistsController do
       p1 = double("Pricelist")
       p2 = double("Pricelist")
       p1.stub(:deep_clone).and_return(p2)
-      Pricelist.stub(:find).with(42).and_return(p1)
+      Pricelist.stub(:find).with("42").and_return(p1)
       p2
     end
     

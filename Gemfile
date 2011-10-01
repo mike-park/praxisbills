@@ -1,27 +1,25 @@
-source 'http://rubygems.dev'
+source 'http://rubygems.org'
 
 gem 'rake'
-gem 'rails', :git => "git://github.com/rails/rails.git", :branch => "3-1-stable"
+gem 'rails', "3.1.1.rc2"
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
+gem 'jquery-rails'
 
 # these add generators that help
-gem "haml", :git => "git://github.com/nex3/haml.git"
 gem 'haml-rails'
-gem 'jquery-rails', :git => "git://github.com/rails/jquery-rails.git"
-
-# sass & css frameworks(s)
-gem "tilt", :git => "git://github.com/rtomayko/tilt.git"
-gem 'sass'
-gem 'sass-rails' #, :git => 'https://github.com/rails/sass-rails.git'
-
-# asset pipeline stuff
-gem "coffee-script" #, :git => "git://github.com/jashkenas/coffee-script.git"
-gem "uglifier", :git => "git://github.com/lautis/uglifier.git"
-#gem "pjax_rails", :git => "git://github.com/rails/pjax_rails.git"
-gem "coffee-filter", :git => "git://github.com/paulnicholson/coffee-filter.git"
 
 # form helpers
 gem 'formtastic'
-gem "formtastic_datepicker_inputs"
+# 2.0 compatible
+gem "formtastic_datepicker_inputs", :git => "git://github.com/adyard/formtastic_datepicker_inputs.git"
 
 # attribute display helper
 gem "attrtastic"
@@ -33,7 +31,7 @@ gem 'rails3-jquery-autocomplete'
 gem 'sqlite3'
 
 # pagination
-gem 'will_paginate', :git => "git://github.com/xspond/will_paginate.git", :branch => "rails3-1"
+gem 'will_paginate'
 
 # navigation help
 gem "simple-navigation"
@@ -52,7 +50,7 @@ group :development, :test do
   
   gem 'annotate'
   gem 'awesome_print'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+#  gem 'ruby-debug19', :require => 'ruby-debug'
 
   gem "capybara"
   gem "launchy"
