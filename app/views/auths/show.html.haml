@@ -1,19 +1,7 @@
-%h2 Authorization
+= render 'auth', auth: @auth
+= render 'bill_items/bill_items', bill_items: @auth.bill_items
 
-= semantic_attributes_for(@auth) do |attr|
-  = attr.attributes do
-    = attr.attribute :patient do
-      = link_to @auth.patient.select_name, @auth.patient
-    = attr.attribute :invoice do
-      = link_to @auth.invoice.select_name, @auth.invoice
-    = attr.attribute :max_sessions
-    = attr.attribute :maximum_quantity
-    = attr.attribute :billed_amount, :format => :number_to_currency
-
-= render 'bill_items/edit_bill_items', :bill_items => @auth.bill_items
-
-= link_to 'New Patient Authorization', new_auth_path
-- if @invoice.present?
-  = link_to 'Show current invoice', @invoice
-= link_to 'Show patients', patients_path
+= link_to 'Edit Authorization', edit_invoice_auth_path(@auth.invoice, @auth)
+= link_to 'Edit therapies', new_auth_bill_item_path(@auth)
+= link_to 'Show invoice', @auth.invoice
 

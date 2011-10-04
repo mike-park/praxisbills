@@ -15,18 +15,19 @@
 
     %h1 Patients
 
-    %table
-      %thead
-        %tr
-          %th Name
-          %th Billed
-          %th Received
-      %tbody
-        = f.semantic_fields_for :auths do |fa|
+    .data.stdTable
+      %table
+        %thead
           %tr
-            %td= fa.object.patient.select_name
-            %td= number_to_currency fa.object.total
-            %td= fa.input :rec_amount, :label => false, :input_html => {:size => 7}
+            %th Name
+            %th Billed
+            %th Received
+        %tbody
+          = f.semantic_fields_for :auths do |fa|
+            %tr
+              %td= fa.object.patient.select_name
+              %td= number_to_currency fa.object.billed_amount
+              %td= fa.input :rec_amount, :label => false, :input_html => {:size => 7}
     = f.input :notes, :input_html => { :rows => 4 }
   = f.buttons
 

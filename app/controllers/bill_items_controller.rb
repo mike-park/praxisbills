@@ -1,19 +1,22 @@
 class BillItemsController < ApplicationController
-  before_filter :find_auth_and_invoice
+  before_filter :find_auth
+
+  def new
+    @bill_item = BillItem.new
+  end
 
   def create
     @bill_item = BillItem.new(params[:bill_item])
-    @bill_item.auth = @auth;
+    @bill_item.auth = @auth
     if @bill_item.save
-      redirect_to @auth, :notice => 'Therapy added'
+      redirect_to new_auth_bill_item_path(@auth), :notice => 'Therapy added'
     else
-      render 'auths/show'
+      render 'new'
     end
   end
 
   def edit
     @bill_item = BillItem.find(params[:id])
-    render 'auths/show'
   end
   
   def update
@@ -21,7 +24,7 @@ class BillItemsController < ApplicationController
     if @bill_item.update_attributes(params[:bill_item])
       redirect_to @auth, :notice => "Updated successfully"
     else
-      render 'auths/show'
+      render 'edit'
     end
   end
 
@@ -33,8 +36,7 @@ class BillItemsController < ApplicationController
 
   private
 
-  def find_auth_and_invoice
+  def find_auth
     @auth = Auth.find(params[:auth_id])
-    @invoice = current_invoice
   end
 end

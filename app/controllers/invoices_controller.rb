@@ -41,7 +41,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoice.save
         self.current_invoice = @invoice
-        format.html { redirect_to(@invoice, :notice => 'Invoice was successfully created.') }
+        format.html { redirect_to(new_invoice_auth_path(@invoice), :notice => 'Invoice was successfully created.') }
         format.xml  { render :xml => @invoice, :status => :created, :location => @invoice }
       else
         format.html { render :action => "new" }

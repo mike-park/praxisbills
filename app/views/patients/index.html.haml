@@ -1,8 +1,4 @@
 %h2 Patients
 
-.data.stdTable
-  = render 'patients', :patients => @patients
+= render 'patients', :patients => @patients
 
-= will_paginate @patients, :class => 'digg_pagination'
-
-= link_to 'New Patient', new_patient_path

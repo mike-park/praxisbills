@@ -1,3 +1,5 @@
+= render 'auths/auth', auth: @auth
+
 = semantic_form_for([@auth, @bill_item]) do |f|
   = f.semantic_errors
   = f.inputs do
@@ -15,7 +17,7 @@
             %th
 
         %tbody
-          - bill_items.each do |bill_item|
+          - @auth.bill_items.each do |bill_item|
             - if bill_item == @bill_item
               = render 'bill_items/form', f:f
             - else
@@ -30,3 +32,4 @@
           - if @bill_item.new_record?
             = render 'bill_items/form', f:f
     
+= link_to "New Authorization", new_invoice_auth_path(@auth.invoice)

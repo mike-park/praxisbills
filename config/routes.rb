@@ -6,18 +6,16 @@ Praxisbills::Application.routes.draw do
 
   resources :insurers
 
-  resources :patients do
-    resources :auths
-  end
-
-  resources :invoices do
-    resources :auths
-  end
-  
   resources :auths do
     resources :bill_items
   end
 
+
+  resources :invoices do
+    resources :auths
+  end
+
+  resources :patients
   resources :payments
   resources :therapies
 

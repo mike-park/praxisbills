@@ -1,11 +1,11 @@
 <% if !@invoice.auths.empty? %>
-  <%= render 'auths/list_auths', :auths => @invoice.auths %>
+  <%= render 'auths/auths', :auths => @invoice.auths %>
 <% end -%>
 
 <% if !@invoice.payments.empty? %>
-  <%= render 'payments/list_payments', :payments => @invoice.payments %>
+  <%= render 'payments/payments', :payments => @invoice.payments %>
 <% end -%> 
 
 <%= link_to 'Add New Patient Authorization', new_invoice_auth_path(@invoice) %> |
-<%= link_to 'Add New Payment', new_payment_path %> |
+<%= link_to 'Add New Payment', new_payment_path(invoice_id: @invoice.id) %> |
 <%= link_to 'List Invoices', invoices_path %>

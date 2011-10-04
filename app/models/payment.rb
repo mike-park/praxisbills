@@ -22,6 +22,8 @@ class Payment < ActiveRecord::Base
   attr_accessible :invoice_id, :rec_date, :amount, :auths_attributes, :notes
   accepts_nested_attributes_for :auths, :reject_if => :all_blank
 
+  scope :by_date, order("rec_date desc")
+
   # sum of a collection of payments
   def self.amount(payments)
     payments.map(&:amount).sum

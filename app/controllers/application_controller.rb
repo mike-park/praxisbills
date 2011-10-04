@@ -6,22 +6,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def current_patient=(patient)
-    @patient = patient
-    session[:patient_id] = patient.nil? ? nil : patient.id
-    logger.info("#{patient} set as current")
-  end
-  
-  def current_patient
-    @patient = find_object_referenced_by(:patient_id, Patient)
-  end
-
   def current_invoice=(invoice)
     @invoice = invoice
-    session[:invoice_id] = invoice.nil? ? nil : invoice.id
+    session[:invoice_id] = invoice.try(:id)
   end
   def current_invoice
-    @invoice = find_object_referenced_by(:invoice_id, Invoice)
+    @invoice ||= find_object_referenced_by(:invoice_id, Invoice)
   end
   
   def find_object_referenced_by(sym, model)

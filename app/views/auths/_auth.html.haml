@@ -1,0 +1,11 @@
+%h2 Authorization
+
+= semantic_attributes_for(auth) do |attr|
+  = attr.attributes do
+    = attr.attribute :patient do
+      = link_to auth.patient.select_name, auth.patient
+    = attr.attribute :invoice do
+      = link_to auth.invoice.select_name, auth.invoice
+    = attr.attribute :max_sessions
+    = attr.attribute :maximum_quantity
+    = attr.attribute :billed_amount, :format => :number_to_currency

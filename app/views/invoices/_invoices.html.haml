@@ -1,25 +1,26 @@
-%table
-  %caption.h3= caption if local_assigns.has_key? :caption
-  %thead
-    %tr
-      %th Sent
-      %th.txtR Billed
-      %th.txtR Received
-      %th.txtR Owed
-      %th
-
-  %tbody
-    - invoices.each do |invoice|
+.data.stdTable
+  %table
+    %caption.h3= caption if local_assigns.has_key? :caption
+    %thead
       %tr
-        %td= l invoice.sent_date
-        %td.txtR= number_to_currency invoice.billed_amount
-        %td.txtR= number_to_currency invoice.received_amount
-        %td.txtR= number_to_currency invoice.owed_to_us
-        %td= link_actions_for(invoice)
+        %th Sent
+        %th.txtR Billed
+        %th.txtR Received
+        %th.txtR Owed
+        %th
 
-    %tr.totals
-      %td= pluralize(invoices.count, 'invoice')
-      %td= number_to_currency invoices.billed_amount
-      %td= number_to_currency invoices.received_amount
-      %td= number_to_currency invoices.owed_to_us
-      %td
+    %tbody
+      - invoices.each do |invoice|
+        %tr
+          %td= l invoice.sent_date
+          %td.txtR= number_to_currency invoice.billed_amount
+          %td.txtR= number_to_currency invoice.received_amount
+          %td.txtR= number_to_currency invoice.owed_to_us
+          %td= link_actions_for(invoice)
+
+      %tr.totals
+        %td= pluralize(invoices.count, 'invoice')
+        %td= number_to_currency invoices.billed_amount
+        %td= number_to_currency invoices.received_amount
+        %td= number_to_currency invoices.owed_to_us
+        %td

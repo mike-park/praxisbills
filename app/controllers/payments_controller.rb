@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    @payment = Payment.new
+    @payment = Payment.new(params.slice(:invoice_id))
 
     respond_to do |format|
       format.html # new.html.erb

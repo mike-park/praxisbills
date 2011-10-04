@@ -1,0 +1,19 @@
+.data.stdTable
+  %table
+    %caption.h3 Therapies
+    %thead
+      %tr
+        %th
+          Therapy (Insurer
+          = link_to(bill_items.first.auth.insurer.abbr, bill_items.first.auth.insurer) + ")"
+        %th.txtR Quantity
+        %th.txtR Price
+        %th.txtR Total
+
+    %tbody
+      - bill_items.each do |bill_item|
+        %tr
+          %td= link_to bill_item.therapy.select_name, therapy_path(bill_item.therapy), :title => bill_item.therapy.description
+          %td.txtR= bill_item.quantity
+          %td.txtR= number_to_currency bill_item.unit_price
+          %td.txtR= number_to_currency bill_item.total

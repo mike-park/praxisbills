@@ -1,31 +1,32 @@
-%table
-  %caption.h3= caption if local_assigns.has_key? :caption
-  %thead
-    %tr
-      %th= local_assigns[:with_date] ? 'Date':'Patient'
-      %th.txtR Sess
-      %th.txtR Used
-      %th.txtR Billed
-      %th.txtR Received
-      %th.txtR Owed
-      %th
-
-  %tbody
-    - auths.each do |auth|
+.data.stdTable
+  %table
+    %caption.h3= caption if local_assigns.has_key? :caption
+    %thead
       %tr
-        %td= local_assigns[:with_date] ? l(auth.invoice_date) : auth.patient.select_name
-        %td.txtR= auth.max_sessions
-        %td.txtR= auth.maximum_quantity
-        %td.txtR= number_to_euro auth.billed_amount
-        %td.txtR= number_to_euro auth.received_amount
-        %td.txtR= number_to_euro auth.owed_to_us
-        %td= link_actions_for(auth)
+        %th= local_assigns[:with_date] ? 'Date':'Patient'
+        %th.txtR Sess
+        %th.txtR Used
+        %th.txtR Billed
+        %th.txtR Received
+        %th.txtR Owed
+        %th
 
-    %tr.totals
-      %td= pluralize(auths.count, 'auth')
-      %td.txtR= auths.max_sessions
-      %td.txtR= auths.quantity
-      %td.txtR= number_to_euro auths.billed_amount
-      %td.txtR= number_to_euro auths.received_amount
-      %td.txtR= number_to_euro auths.owed_to_us
-      %td
+    %tbody
+      - auths.each do |auth|
+        %tr
+          %td= local_assigns[:with_date] ? l(auth.invoice_date) : auth.patient.select_name
+          %td.txtR= auth.max_sessions
+          %td.txtR= auth.maximum_quantity
+          %td.txtR= number_to_euro auth.billed_amount
+          %td.txtR= number_to_euro auth.received_amount
+          %td.txtR= number_to_euro auth.owed_to_us
+          %td= link_actions_for(auth)
+
+      %tr.totals
+        %td= pluralize(auths.count, 'auth')
+        %td.txtR= auths.max_sessions
+        %td.txtR= auths.quantity
+        %td.txtR= number_to_euro auths.billed_amount
+        %td.txtR= number_to_euro auths.received_amount
+        %td.txtR= number_to_euro auths.owed_to_us
+        %td
