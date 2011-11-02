@@ -2,7 +2,7 @@ class PricelistsController < ApplicationController
   # GET /pricelists
   # GET /pricelists.xml
   def index
-    @pricelists = Pricelist.all
+    @pricelists = Pricelist.by_date.all
 
     respond_to do |format|
       format.html # index.html.erb

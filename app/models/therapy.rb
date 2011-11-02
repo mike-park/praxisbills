@@ -22,6 +22,8 @@ class Therapy < ActiveRecord::Base
   validates_numericality_of :price
   validates_uniqueness_of :code, :scope => :pricelist_id
 
+  scope :by_code, order('code asc')
+
   def select_name
     "#{code} #{short_description || description}".truncate(45)
   end

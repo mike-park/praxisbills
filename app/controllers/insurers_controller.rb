@@ -2,7 +2,7 @@ class InsurersController < ApplicationController
   # GET /insurers
   # GET /insurers.xml
   def index
-    @insurers = Insurer.all
+    @insurers = Insurer.by_name.all
 
     respond_to do |format|
       format.html # index.html.erb

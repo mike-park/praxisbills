@@ -5,16 +5,17 @@ class Auth < ActiveRecord::Base
 
   has_many :bill_items, :order => "created_at", :dependent => :destroy
 
-  scope :by_name, includes(:patient).order('patients.last_name')
-  default_scope by_name
+  scope :by_name, includes(:patient).order('patients.last_name, patients.first_name')
   scope :by_most_recent, order('auths.updated_at DESC')
 
   validates_presence_of :patient, :insurer
+
+# sometimes we bill the same person more than once per invoice
+#  validates_uniqueness_of :patient_id,
+#                          :scope => "invoice_id",
+#                          :if => :invoice_id,
+#                          :message => 'is already referenced by this invoice'
   
-  validates_uniqueness_of :patient_id,
-                          :scope => "invoice_id",
-                          :if => :invoice_id,
-                          :message => 'is already referenced by this invoice'
   validates_numericality_of :rec_amount, :unless => "rec_amount.blank?"
 
   attr_accessible :doctor, :max_sessions, :billed,

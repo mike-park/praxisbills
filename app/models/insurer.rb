@@ -17,7 +17,7 @@ class Insurer < ActiveRecord::Base
   
   validates_presence_of :abbr, :name
 
-  default_scope order('abbr')
+  scope :by_name, order('abbr')
 
   def to_label
     "#{abbr}: #{name}"

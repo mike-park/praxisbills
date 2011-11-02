@@ -17,6 +17,8 @@ class Pricelist < ActiveRecord::Base
 
   accepts_nested_attributes_for :therapies
 
+  scope :by_date, order('start_date desc')
+
   def name
     "#{start_date.to_s}: #{note}"
   end

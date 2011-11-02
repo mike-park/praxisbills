@@ -2,7 +2,7 @@
 
 class PaymentsController < ApplicationController
   def index
-    @payments = Payment.all
+    @payments = Payment.by_date.all
 
     respond_to do |format|
       format.html # index.html.erb

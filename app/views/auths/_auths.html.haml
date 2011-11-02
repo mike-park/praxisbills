@@ -14,7 +14,7 @@
     %tbody
       - auths.each do |auth|
         %tr
-          %td= local_assigns[:with_date] ? l(auth.invoice_date) : auth.patient.select_name
+          %td= local_assigns[:with_date] ? link_to(l(auth.invoice_date), invoice_path(auth.invoice)) : link_to(auth.patient.select_name, patient_path(auth.patient))
           %td.txtR= auth.max_sessions
           %td.txtR= auth.maximum_quantity
           %td.txtR= number_to_euro auth.billed_amount

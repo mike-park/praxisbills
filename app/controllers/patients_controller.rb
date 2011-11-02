@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   respond_to :html
 
   def index
-    respond_with(@patients = Patient.all)
+    respond_with(@patients = Patient.by_name.all)
   end
 
   def show

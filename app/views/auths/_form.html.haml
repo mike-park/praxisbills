@@ -3,7 +3,7 @@
   = f.hidden_field :invoice_id
 
   = f.inputs do
-    = f.input :patient, :input_html => { :onchange => 'patientChanged(this);' }
+    = f.input :patient, :input_html => { :onchange => 'patientChanged(this);', :autofocus => true }
     %div OR #{link_to 'Add a new patient', new_patient_path}
     = f.input :insurer
   = f.buttons

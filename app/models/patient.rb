@@ -13,6 +13,7 @@
 
 class Patient < ActiveRecord::Base
   has_many :auths, :dependent => :destroy, :order => 'auths.created_at desc'
+  has_many :invoices, :through => :auths, :uniq => true
 
   validates_presence_of :last_name, :first_name
   
@@ -23,7 +24,7 @@ class Patient < ActiveRecord::Base
   before_save :strip_white_space
 
   # XXX is this sqlite only LOWER?
-  default_scope order('LOWER(last_name)')
+  scope :by_name, order('LOWER(last_name), LOWER(first_name)')
   
   def select_name
     [last_name, first_name].join(", ")
@@ -37,5 +38,9 @@ class Patient < ActiveRecord::Base
 
   def current_insurer
     auths.by_most_recent.first.try(:insurer)
+  end
+
+  def current_invoice
+    invoices.first
   end
 end
