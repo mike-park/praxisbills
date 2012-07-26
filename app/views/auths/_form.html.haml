@@ -3,7 +3,10 @@
   = f.hidden_field :invoice_id
 
   = f.inputs do
-    = f.input :patient, :input_html => { :onchange => 'patientChanged(this);', :autofocus => true }
+    = f.input :patient, collection: Patient.by_name, :input_html => { :onchange => 'patientChanged(this);', :autofocus => true }
     %div OR #{link_to 'Add a new patient', new_patient_path}
     = f.input :insurer
+    #auth_last_date_hint
+    = f.input :first_date, :as => :date_picker, :format => '%d.%m.%Y'
+    = f.input :last_date, :as => :date_picker, :format => '%d.%m.%Y'
   = f.buttons

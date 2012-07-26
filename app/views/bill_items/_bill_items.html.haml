@@ -5,7 +5,7 @@
       %tr
         %th
           Therapy (Insurer
-          = link_to(bill_items.first.auth.insurer.abbr, bill_items.first.auth.insurer) + ")"
+          = link_to(bill_items.first.auth.insurer.abbr, bill_items.first.auth.insurer) + ")" if bill_items.first
         %th.txtR Quantity
         %th.txtR Price
         %th.txtR Total

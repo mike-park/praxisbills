@@ -18,7 +18,7 @@ class Auth < ActiveRecord::Base
   
   validates_numericality_of :rec_amount, :unless => "rec_amount.blank?"
 
-  attr_accessible :doctor, :max_sessions, :billed,
+  attr_accessible :doctor, :max_sessions, :billed, :first_date, :last_date,
   :patient_id, :invoice_id, :rec_amount, :insurer_id, :bill_items_attributes
 
   delegate :billed_amount, :maximum_quantity, :to => :bill_items

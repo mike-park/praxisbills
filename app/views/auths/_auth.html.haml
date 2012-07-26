@@ -9,3 +9,5 @@
     = attr.attribute :max_sessions
     = attr.attribute :maximum_quantity
     = attr.attribute :billed_amount, :format => :number_to_currency
+    = attr.attribute(:first_date, value: auth.first_date.to_s(:de)) if auth.first_date
+    = attr.attribute(:last_date, value: auth.last_date.to_s(:de)) if auth.last_date
