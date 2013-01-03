@@ -48,3 +48,9 @@ group :development, :test do
   gem "launchy"
   gem 'database_cleaner'
 end
+
+group :development do
+  # used by rails_panel (a chrome extension for debugging rails apps)
+  # https://github.com/dejan/rails_panel
+  gem 'meta_request', '0.2.1'
+end
