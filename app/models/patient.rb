@@ -41,6 +41,6 @@ class Patient < ActiveRecord::Base
   end
 
   def current_invoice
-    invoices.first
+    invoices.order_from_most_recent.first
   end
 end
