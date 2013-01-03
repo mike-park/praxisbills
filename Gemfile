@@ -41,14 +41,6 @@ group :development, :test do
   
   # ensure we get latest syntax
   gem 'factory_girl_rails', '>= 1.1.beta4', :require => false
-  gem 'spork', '~> 0.9.0.rc2'
-  gem "autotest", "~> 4.4.6"
-  gem "autotest-rails-pure", "~> 4.1.2"
-  gem "autotest-fsevent", "~> 0.2.4"
-  gem "autotest-growl", "~> 0.2.9"
-
-  
-  gem 'annotate'
   gem 'awesome_print'
 #  gem 'ruby-debug19', :require => 'ruby-debug'
 
